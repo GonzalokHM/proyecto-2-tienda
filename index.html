@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <header>
+      <img src="logo.png" alt="Mi Tienda Online" />
+      <nav>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Productos</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="products">
+        <h2>Productos Disponibles</h2>
+        <input type="text" id="searchInput" placeholder="Buscar producto por nombre">
+        <ul id="itemList">
+        </ul>
+      </section>
+      <section id="cart">
+        <h2>Carrito de Compras</h2>
+        <ul id="cartList">
+        </ul>
+        <button id="emptyCartBtn">Vaciar Carrito</button>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Mi Tienda Online</p>
+    </footer>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
