@@ -2,20 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/jpg" href="/icon.url" sizes="48x48">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>greenShop</title>
   </head>
   <body>
     <header>
-      <img src="logo.png" alt="Mi Tienda Online" />
-      <nav>
-        <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Productos</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
-      </nav>
+      <h1>🍃greenShop🌞</h1>
+      <div class="navbar-container">
+        <nav id="navbar">
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#products">Productos</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main>
       <section id="products">
@@ -30,10 +32,15 @@
         </ul>
         <button id="emptyCartBtn">Vaciar Carrito</button>
       </section>
+      
+      <div id="comments-container">
+        <button id="load-comments">comentarios</button>
+      </div>
     </main>
     <footer>
-      <p>&copy; 2023 Mi Tienda Online</p>
+      <p>&copy; greenShop 2023</p>
     </footer>
+    <script type="module" src="./components/shop.js"></script>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

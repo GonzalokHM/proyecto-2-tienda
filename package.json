@@ -10,5 +10,9 @@
   },
   "devDependencies": {
     "vite": "^4.2.0"
+  },
+  "dependencies": {
+    "fetch-mock": "^9.11.0",
+    "string-similarity": "^4.0.4"
   }
 }

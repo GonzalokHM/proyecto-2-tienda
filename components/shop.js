@@ -1,84 +1,44 @@
 import "./shop.css"
-import {stock,searchItems,getItemById} from "../src/api"
+import { stock } from '../src/stock';
 
-const itemList = document.getElementById('itemList');
-const itemInput = document.getElementById('itemInput');
-const addItemBtn = document.getElementById('addItemBtn');
-const searchInput = document.getElementById('searchInput');
+ const itemList = document.getElementById('itemList');
 
-// Función para mostrar los productos en la lista
-function showItems(items) {
-  itemList.innerHTML = ''; // Vaciar la lista
+const showStock = (items = stock) => {
+  itemList.innerHTML = '';
+  console.log(`Showing stock for ${items.length} items`);
 
   items.forEach(item => {
     const li = document.createElement('li');
-    const img = document.createElement('img');
-    const span = document.createElement('span');
-    const deleteBtn = document.createElement('button');
+    li.innerHTML = `
+      <div class="item">
+        <img src="${item.image}" alt="${item.name}" />
+        <h3>${item.name}</h3>
+        <p>${item.price}</p>
+        <button class="addToCartBtn" data-id="${item.id}">Agregar al Carrito</button>
+        <div class="description-container hidden">
+        <p class="description">${item.description}</p>
+        </div>
+        <button class="showMoreBtn">+ Info</button>
+      </div>
+    `;
+    const showDescriptionButtons = li.querySelectorAll('.showMoreBtn');
 
-    img.src = item.image; // Agrega la imagen del producto
-    img.alt = item.name; // Agrega el nombre del producto como texto alternativo de la imagen
-    span.textContent = item.name;
-    deleteBtn.textContent = 'Eliminar';
-    deleteBtn.addEventListener('click', function() {
-      li.remove();
+    showDescriptionButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const descriptionContainer = button.previousElementSibling;
+        descriptionContainer.classList.toggle('hidden');
+      });
     });
 
-    li.appendChild(img);
-    li.appendChild(span);
-    li.appendChild(deleteBtn);
     itemList.appendChild(li);
   });
 }
+showStock()
+console.log(showStock)
 
-function searchItemsHandler(query) {
-  const filteredItems = searchItems(query);
-  if (filteredItems.length === 0) {
-    itemList.innerHTML = '<li>No se encontraron resultados</li>';
-  } else {
-    showItems(filteredItems);
-  }
-}
-// Función para agregar productos a la lista
-function addItemToList(item) {
-  const itemInfo = getItemById(item);
-  if (!itemInfo) {
-   alert('Producto no encontrado en el stock');
-    return;
-  }
-  const li = document.createElement('li');
-  const img = document.createElement('img');
-  const span = document.createElement('span');
-  const deleteBtn = document.createElement('button');
 
-  img.src = itemInfo.image; // Agrega la imagen del producto
-  img.alt = itemInfo.name; // Agrega el nombre del producto como texto alternativo de la imagen
-  span.textContent = itemInfo.name;
-  deleteBtn.textContent = 'Eliminar';
-  deleteBtn.addEventListener('click', function() {
-    li.remove();
-  });
+export {showStock};
 
-  li.appendChild(img);
-  li.appendChild(span);
-  li.appendChild(deleteBtn);
-  itemList.appendChild(li);
+
   
-}
-
-
-// Adjuntar el controlador de eventos al botón Agregar
-addItemBtn.addEventListener('click', () => {
-  const item = parseInt(itemInput.value);
-  addItemToList(item);
-  itemInput.value = '';
-  itemInput.focus();
-});
-
-
-// Adjuntar el controlador de eventos al input de búsqueda
-searchInput.addEventListener('input', () => {
-  const query = searchInput.value;
-  searchItemsHandler(query);
-});
 
