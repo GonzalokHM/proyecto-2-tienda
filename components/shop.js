@@ -1,13 +1,13 @@
 import "./shop.css"
 import { stock } from '../src/stock';
+import { state } from '../main';
 
  const itemList = document.getElementById('itemList');
 
-const showStock = (items = stock) => {
+const showStock = (items = state.stock) => {
   itemList.innerHTML = '';
-  console.log(`Showing stock for ${items.length} items`);
 
-  items.forEach(item => {
+  state.stock.forEach(item => {
     const li = document.createElement('li');
     li.innerHTML = `
       <div class="item">
@@ -33,6 +33,15 @@ const showStock = (items = stock) => {
     itemList.appendChild(li);
   });
 }
+
+const cart = document.getElementById('cart');
+const cartContainer = document.getElementById('cartContainer');
+
+cart.addEventListener('click', () => {
+  cartContainer.classList.toggle('hidden');
+});
+
+
 showStock()
 console.log(showStock)
 

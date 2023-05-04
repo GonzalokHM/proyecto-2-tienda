@@ -16,6 +16,14 @@
             <li><a href="#products">Productos</a></li>
             <li><a href="#">Contacto</a></li>
           </ul>
+          <button id="cartBtn">Carrito</button>
+         <div id="cartContainer" class="hidden">
+          <h2>Carrito de Compras</h2>
+          <ul id="cartList"></ul>
+          <p>Total: $<span id="cartCount">0.00</span></p>
+          <button id="emptyCartBtn">Vaciar Carrito</button>
+          <button id="checkoutBtn">Finalizar Compra</button>
+          </div>
         </nav>
       </div>
     </header>
@@ -25,12 +33,6 @@
         <input type="text" id="searchInput" placeholder="Buscar producto por nombre">
         <ul id="itemList">
         </ul>
-      </section>
-      <section id="cart">
-        <h2>Carrito de Compras</h2>
-        <ul id="cartList">
-        </ul>
-        <button id="emptyCartBtn">Vaciar Carrito</button>
       </section>
       
       <div id="comments-container">
