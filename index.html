@@ -21,7 +21,7 @@
           <h2>Carrito de Compras</h2>
           <ul id="cartList"></ul>
           <p>Total: $<span id="cartCount">0.00</span></p>
-          <button id="emptyCartBtn">Vaciar Carrito</button>
+          <button id="emptyCartBtn" class="removeFromCartBtn">eliminar del Carrito</button>
           <button id="checkoutBtn">Finalizar Compra</button>
           </div>
         </nav>
@@ -36,7 +36,17 @@
       </section>
       
       <div id="comments-container">
+        <form id="comments-form">
+          <label for="name-input">Nombre:</label>
+          <input type="text" id="name-input" name="name" required>
+          
+          <label for="comment-input">Comentario:</label>
+          <textarea id="comment-input" name="comment" required></textarea>
+          
+          <button type="submit">Enviar</button>
+        </form>
         <button id="load-comments">comentarios</button>
+        <ul id="comments-list"></ul>
       </div>
     </main>
     <footer>

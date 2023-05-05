@@ -4,18 +4,16 @@ import "./components/search.js";
 import "./components/cart.js";
 import "./components/cart.js"
 
+import { showStock } from "./components/shop";
+import { state } from "./src/state";
 
 const navbarContainer = document.querySelector('.navbar-container');
 const navbarHeight = navbarContainer.offsetHeight;
-const updatedStock = stock.map(item => {
-  return { ...item, quantity: 0 };
-});
 
-const state = {
-  stock,
-  cart: []
-};
-showStock(state.stock);
+
+state.init();
+
+window.addEventListener('load', showStock);
 
 window.addEventListener('scroll', () => {
   if (window.pageYOffset > navbarHeight) {
@@ -25,14 +23,4 @@ window.addEventListener('scroll', () => {
   }
 });
 
-export { state, updatedStock };
-
-  
-
-
-
-
-  
-
-
-
+showStock(state);

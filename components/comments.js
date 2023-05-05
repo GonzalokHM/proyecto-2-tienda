@@ -27,7 +27,7 @@ try {
 
   const img = document.createElement('img');
   img.src = 'https://1.bp.blogspot.com/_FUCD-ZQp98g/TD1hkNv9knI/AAAAAAAACDY/gQZWdJh4qwo/s1600/problema_tecnico.jpg';
-
+  
   document.body.appendChild(img);
 }};
 
@@ -36,3 +36,32 @@ const loadCommentsButton = document.querySelector('#load-comments');
 loadCommentsButton.addEventListener('click', () => {
 getComments();
 });
+
+const state = { comments: [] }; // Creamos un objeto para almacenar los comentarios
+
+const commentsForm = document.getElementById('comments-form');
+const commentsList = document.getElementById('comments-list');
+
+const showComments = () => {
+  commentsList.innerHTML = '';
+  state.comments.forEach(comment => {
+    const li = document.createElement('li');
+    li.innerHTML = getcommentsCardTemplate(comment.name, '', comment.text);
+    commentsList.appendChild(li);
+  });
+};
+
+commentsForm.addEventListener('submit', async event => {
+  event.preventDefault();
+  const nameInput = commentsForm.querySelector('input[name="name"]');
+  const textInput = commentsForm.querySelector('textarea[name="text"]');
+  const name = nameInput.value.trim();
+  const text = textInput.value.trim();
+  if (name && text) {
+    state.comments.push({ name, text });
+    showComments();
+    nameInput.value = '';
+    textInput.value = '';
+  }});
+    showComments();
+
