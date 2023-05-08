@@ -4,21 +4,32 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="./assets/icon.png" sizes="48x48">
     <link rel="stylesheet" href="./style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>greenShop</title>
   </head>
   <body>
     <header>
       <h1>🍃greenShop🌞</h1>
-      <div class="navbar-container">
+      <div id="welcome">
+        <h2>
+          welcome to green world
+        </h2>
+      </div>
+      <div class="navbar-container welcome-hidden">
+        <div class="menu-icon">
+          <span class="menu-icon__line"></span>
+          <span class="menu-icon__line"></span>
+          <span class="menu-icon__line"></span>
+        </div>
         <nav id="navbar">
-          <ul>
+          <ul class="nav hidden">
             <li><a href="#">Inicio</a></li>
-            <li><a href="#products">Productos</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="#searchInput">Buscar</a></li>
+            <li><a href="#comments-form">Reseñas</a></li>
           </ul>
           <button id="cartBtn">🛒</button>
-         <div id="cartContainer" class="hidden">
+         <div id="cartContainer" class="cart-hidden">
           <h2>Carrito de Compras</h2>
           <ul id="cartList"></ul>
           <p>Total: $<span id="cartCount">0.00</span></p>
@@ -31,22 +42,27 @@
     <main>
       <section id="products">
         <h2>Productos Disponibles</h2>
-        <input type="text" id="searchInput" placeholder="Buscar producto por nombre">
+      <div class="input">
+        <input type="text" id="searchInput" placeholder="Buscar producto por nombre" size="21">
+      </div>
         <ul id="itemList">
         </ul>
       </section>
       
       <div id="comments-container">
         <form id="comments-form">
-          <label for="name-input">Nombre:</label>
-          <input type="text" id="name-input" name="name" required>
-          
-          <label for="comment-input">Comentario:</label>
-          <textarea id="comment-input" name="comment" required></textarea>
+          <div class="input">
+            <label for="name-input" class="form-label">Nombre:</label>
+            <input type="text" id="name-input" name="name" required>
+          </div>
+          <div class="input">
+            <label for="comment-input" class="form-label">Comentario:</label>
+            <textarea id="comment-input" name="comment" required></textarea>
+          </div>
           
           <button type="submit">Enviar</button>
         </form>
-        <button id="load-comments">comentarios</button>
+        <button id="load-comments"> ver comentarios</button>
         <ul id="comments-list"></ul>
       </div>
     </main>

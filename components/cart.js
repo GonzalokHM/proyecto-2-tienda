@@ -4,10 +4,17 @@ import { state } from '../src/state';
 
 // Obtener los elementos del DOM necesarios
 const cartList = document.getElementById("cartList");
-const cartContainer = document.getElementById("cartContainer");
 const cartCountElem = document.getElementById("cartCount");
+const cartContainer = document.getElementById("cartContainer");
 
-   
+
+const toggleCart = () => {
+  const cartContainer = document.getElementById("cartContainer");
+  cartContainer.classList.toggle("cart-hidden");
+  console.log("okayyyy")
+};
+
+
 // Función para añadir un objeto al carrito
 const addToCart = (id) => {
   const item = state.stock.find((item) => item.id === id);
@@ -45,9 +52,9 @@ const updateCart = () => {
 
   
   if (state.cart.length > 0) {
-    cartContainer.classList.remove('hidden');
+    cartContainer.classList.remove('cart-hidden');
   } else {
-    cartContainer.classList.add('hidden');
+    cartContainer.classList.add('cart-hidden');
   }
 };
 
@@ -67,4 +74,8 @@ cartList.addEventListener("click", (event) => {
   }
 });
 
-export { addToCart, removeFromCart, updateCart };
+
+
+
+
+export { addToCart, removeFromCart, updateCart, toggleCart};

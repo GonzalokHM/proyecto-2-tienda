@@ -1,7 +1,7 @@
 import { stock } from '../src/stock';
 import stringSimilarity from 'string-similarity';
 import { showStock } from './shop';
-
+import "./shop.css"
 
 
 
