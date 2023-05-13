@@ -10,9 +10,7 @@ const getcommentsCardTemplate = (name, email, body,) => `
 const getComments = async () => {
 try {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts/1/comments');
-  const comments = await response.json();
-  console.log(comments);
-  
+  const comments = await response.json();  
   const commentsContainer = document.getElementById('comments-container');
   comments.forEach(comment => {
     const commentElement = document.createElement('div');

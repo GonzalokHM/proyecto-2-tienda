@@ -7,64 +7,28 @@ const cartList = document.getElementById("cartList");
 const cartCountElem = document.getElementById("cartCount");
 const cartContainer = document.getElementById("cartContainer");
 
+const cart = state.getCart();
+const total = state.getTotal();
 
 const toggleCart = () => {
   const cartContainer = document.getElementById("cartContainer");
   cartContainer.classList.toggle("cart-hidden");
-  console.log("okayyyy")
 };
 
-
-// Función para añadir un objeto al carrito
-const addToCart = (id) => {
-  const item = state.stock.find((item) => item.id === id);
-  if (item) {
-    const itemInCart = state.cart.find((cartItem) => cartItem.id === id);
-    if (itemInCart) {
-      itemInCart.quantity++;
-    } else {
-      state.cart.push({ ...item, quantity: 1 });
-    }
-    updateCart();
-  }
-};
-
-
-
-const updateCart = () => {
-  cartList.innerHTML = '';
-
-  state.cart.forEach((item) => {
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <div class="cartItem">
-        <h3>${item.name}</h3>
-        <p>${item.price} x ${item.quantity}</p>
-        <button class="removeFromCartBtn" data-id="${item.id}">Eliminar</button>
-      </div>
-    `;
-    cartList.appendChild(li);
-  });
-
- 
-  const cartCount = state.cart.reduce((acc, item) => acc + item.quantity, 0);
-  cartCountElem.textContent = cartCount.toString();
 
   
-  if (state.cart.length > 0) {
+  
+  const cartCount = total.quantity;
+  cartCountElem.textContent = cartCount;
+  
+  
+  if (cart.length > 0) {
     cartContainer.classList.remove('cart-hidden');
   } else {
     cartContainer.classList.add('cart-hidden');
   }
-};
 
-const removeFromCart = (id) => {
-  const itemIndex = state.cart.findIndex((item) => item.id === id);
-  if (itemIndex !== -1) {
-    state.cart.splice(itemIndex, 1);
-    updateCart();
-  }
-};
+
 
 cartList.addEventListener("click", (event) => {
   const removeBtn = event.target.closest(".removeFromCartBtn");
@@ -74,8 +38,43 @@ cartList.addEventListener("click", (event) => {
   }
 });
 
+const showCart = () => {
+  console.log('Mostrando carrito:');
+  console.log(cart);
+ 
+  
+  cartList.innerHTML = '';
+  cart.forEach(item => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+    <div class="cart-item">
+      <h3>${item.name}</h3>
+      <p>Cantidad: ${item.quantity}</p>
+      <button class="removeBtn" data-remove-from-cart="${item.id}">Eliminar</button>
+    </div>
+    `;
+    cartList.appendChild(li);
+  });
+    
+  const cartCount = total.quantity;
+  cartCountElem.textContent = cartCount;
+  
+  
+  if (cart.length > 0) {
+    cartContainer.classList.remove('cart-hidden');
+  } else {
+    cartContainer.classList.add('cart-hidden');
+  }
+  const removeButtons = document.querySelectorAll('.removeBtn');
+  removeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const itemId = button.getAttribute('data-remove-from-cart');
+      state.removeFromCart(itemId);
+      showCart();
+    });
+  });
+  console.log('Carrito mostrado.');
 
+}
 
-
-
-export { addToCart, removeFromCart, updateCart, toggleCart};
+export {toggleCart, showCart};

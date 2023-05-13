@@ -1,39 +1,71 @@
-import { stock } from "./stock.js";
+import { stocks } from "./stock.js";
 
 const state = {
   stock: [],
   cart: [],
 
-  init: function () {
-    // Inicializa el estado del stock agregando la cantidad a cada elemento y creando una propiedad `selected` para marcar los elementos seleccionados.
-    this.stock = stock.map(item => {
-      return { ...item, quantity: 0, selected: false };
+  // Inicializa el estado del stock agregando la cantidad a cada elemento y creando una propiedad `selected` para marcar los elementos seleccionados.
+   init: function () {
+    this.stock = stocks.map(item => {
+      return { ...item, quantity: item.quantityStock, selected: false };
     });
   },
 
+  
   getStock: function () {
     // Devuelve una copia del stock actual.
     return this.stock.slice();
   },
 
+  setCart: function(cart) {
+    this.cart = cart;
+  },
+  
+  
   getCart: function () {
     // Devuelve una copia del carrito actual.
     return this.cart.slice();
   },
-
-  addToCart: function (id) {
-    // Busca el elemento en el stock y lo agrega al carrito si hay suficientes unidades disponibles.
-    const item = this.stock.find(item => item.id === id);
-    const cartItem = this.cart.find(item => item.id === id);
-    if (item && item.quantity > 0 && (!cartItem || !cartItem.selected)) {
-      if (cartItem) {
-        cartItem.quantity++;
-      } else {
-        this.cart.push({ ...item, quantity: 1 });
-      }
-      item.quantity--;
+  getItemById: function(id) {
+    console.log('id received by getItemById function:', id);
+    const stock = this.stock;
+    const item = stock.find(function(item) {
+      console.log('item being checked:', item);
+      console.log('item id:', item.id);
+      return item.id === id;
+    });
+    if (item === undefined) {
+      console.log('item with id ' + id + ' not found');
+      return;
     }
+    console.log('item found by getItemById function:', item);
+    return item;
   },
+  
+  addToCart: function(itemId, cart) {
+    console.log('id passed to getItemById function:', itemId);
+    const itemToAdd = this.getItemById(itemId);
+    console.log('add>>>>>>>>',itemToAdd)
+    if (!itemToAdd) {
+      console.log(`No se encontró ningún elemento con id ${itemId}`);
+      return cart.slice(); // Devuelve una copia del carrito actual sin hacer cambios
+    }
+  
+    // Verifica si el item ya está en el carrito
+    const existingCartItem = cart.find(item => item.id === itemId);
+  
+    if (existingCartItem) {
+      // Si el item ya está en el carrito, actualiza la cantidad
+      existingCartItem.quantity++;
+    } else {
+      // Si el item no está en el carrito, agrégalo
+      cart.push({ ...itemToAdd, quantity: 1 });
+    }
+
+    console.log('updated cart:', cart);
+    return cart.slice(); // Devuelve una copia actualizada del carrito
+},
+
 
   removeFromCart: function (id) {
     // Busca el elemento en el carrito y lo elimina.
@@ -48,7 +80,7 @@ const state = {
   clearCart: function () {
     // Vacia el carrito y restaura las unidades en el stock.
     this.cart.forEach(item => {
-      const stockItem = this.stock.find(item => item.id === item.id);
+      const stockItem = this.stock.find(item => item.id === id);
       stockItem.quantity += item.quantity;
     });
     this.cart = [];

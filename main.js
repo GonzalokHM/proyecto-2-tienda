@@ -4,9 +4,9 @@ import "./components/search.js";
 import "./components/cart.js";
 
 import { showStock } from "./components/shop";
-import { toggleCart } from "./components/cart";
+import { toggleCart} from "./components/cart";
 import { state } from "./src/state";
-console.log(toggleCart)
+
 const navbarContainer = document.querySelector('.navbar-container');
 const navbarHeight = navbarContainer.offsetHeight;
 
@@ -28,6 +28,7 @@ const cartBtn = document.getElementById('cartBtn');
 
 cartBtn.addEventListener("click", toggleCart);
 
+
 menuIcon.addEventListener('click', function() {
   menuIcon.classList.toggle('open');
   navbar.classList.toggle('open');
@@ -48,5 +49,3 @@ window.addEventListener('scroll', () => {
     navbarContainer.classList.remove('fixed');
   }
 });
-
-showStock(state);

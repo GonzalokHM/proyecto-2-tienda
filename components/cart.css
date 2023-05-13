@@ -32,7 +32,6 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
-    display: none;
   }
   
   .addToCartBtn {
@@ -47,4 +46,16 @@
   .addToCartBtn:hover {
     background-color: #01ff12;
     color:#ffffff 
+}
+
+.success-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
 }
