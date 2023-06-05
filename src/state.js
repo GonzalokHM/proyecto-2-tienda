@@ -26,61 +26,68 @@ const state = {
     // Devuelve una copia del carrito actual.
     return this.cart.slice();
   },
-  getItemById: function(id) {
-    console.log('id received by getItemById function:', id);
+  findItemById: function(id) {
     const stock = this.stock;
     const item = stock.find(function(item) {
-      console.log('item being checked:', item);
-      console.log('item id:', item.id);
       return item.id === id;
     });
-    if (item === undefined) {
-      console.log('item with id ' + id + ' not found');
+    
+    return item;
+  },
+
+  getItemById: function(id) {
+    const item = this.findItemById(id);
+    
+    if (!item) {
+      console.log(`No se encontró ningún elemento con id ${id}`);
       return;
     }
-    console.log('item found by getItemById function:', item);
     return item;
   },
   
   addToCart: function(itemId, cart) {
-    console.log('id passed to getItemById function:', itemId);
-    const itemToAdd = this.getItemById(itemId);
-    console.log('add>>>>>>>>',itemToAdd)
-    if (!itemToAdd) {
-      console.log(`No se encontró ningún elemento con id ${itemId}`);
-      return cart.slice(); // Devuelve una copia del carrito actual sin hacer cambios
-    }
-  
-    // Verifica si el item ya está en el carrito
     const existingCartItem = cart.find(item => item.id === itemId);
-  
     if (existingCartItem) {
-      // Si el item ya está en el carrito, actualiza la cantidad
-      existingCartItem.quantity++;
+      const updatedCart = cart.map(item => {
+        if (item.id === itemId) {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+        return item;
+      });
+      return updatedCart;
     } else {
-      // Si el item no está en el carrito, agrégalo
-      cart.push({ ...itemToAdd, quantity: 1 });
-    }
-
-    console.log('updated cart:', cart);
-    return cart.slice(); // Devuelve una copia actualizada del carrito
-},
-
-
-  removeFromCart: function (id) {
-    // Busca el elemento en el carrito y lo elimina.
-    const cartItem = this.cart.find(item => item.id === id);
-    if (cartItem) {
-      const stockItem = this.stock.find(item => item.id === id);
-      stockItem.quantity += cartItem.quantity;
-      this.cart.splice(this.cart.indexOf(cartItem), 1);
+      const itemToAdd = this.getItemById(itemId);
+      const updatedCart = [...cart, { ...itemToAdd, quantity: 1 }];
+      return updatedCart;
     }
   },
+  
 
+
+  
+removeFromCart: function(itemId) {
+  const cartItemIndex = this.cart.findIndex(item => item.id.toString() === itemId.toString());
+  if (cartItemIndex !== -1) {
+    const cartItem = this.cart[cartItemIndex];
+    const stockItem = this.stock.find(item => item.id.toString() === itemId.toString());
+    if (cartItem.quantity === 1) {
+      stockItem.quantity += 1; // Aumentar la cantidad en 1 en el stock
+      this.cart.splice(cartItemIndex, 1); // Eliminar el elemento del carrito si la cantidad llega a 1
+    } else if (cartItem.quantity > 1) {
+      cartItem.quantity -= 1; // Disminuir la cantidad en 1 en el carrito
+    }
+  }
+  return this.cart;
+},
+
+  
+  
+    
+  
   clearCart: function () {
     // Vacia el carrito y restaura las unidades en el stock.
     this.cart.forEach(item => {
-      const stockItem = this.stock.find(item => item.id === id);
+      const stockItem = this.stock.find(stockItem => stockItem.id === item.id);
       stockItem.quantity += item.quantity;
     });
     this.cart = [];

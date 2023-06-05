@@ -33,7 +33,7 @@
           <h2>Carrito de Compras</h2>
           <ul id="cartList"></ul>
           <p>Total: $<span id="cartCount">0.00</span></p>
-          <button id="emptyCartBtn" class="removeFromCartBtn">eliminar del Carrito</button>
+          <button id="emptyCartBtn" class="removeCartBtn">vaciar Carrito</button>
           <button id="checkoutBtn">Finalizar Compra</button>
           </div>
         </nav>
@@ -42,36 +42,19 @@
     <main>
       <section id="products">
         <h2>Productos Disponibles</h2>
-      <div class="input">
-        <input type="text" id="searchInput" placeholder="Buscar producto por nombre" size="21">
-      </div>
         <ul id="itemList">
         </ul>
       </section>
       
-      <div id="comments-container">
-        <form id="comments-form">
-          <div class="input">
-            <label for="name-input" class="form-label">Nombre:</label>
-            <input type="text" id="name-input" name="name" required>
-          </div>
-          <div class="input">
-            <label for="comment-input" class="form-label">Comentario:</label>
-            <textarea id="comment-input" name="comment" required></textarea>
-          </div>
-          
-          <button type="submit">Enviar</button>
-        </form>
-        <button id="load-comments"> ver comentarios</button>
-        <ul id="comments-list"></ul>
-      </div>
+      <section id="comments-container">
+      </section>
     </main>
     <footer>
       <p>&copy; greenShop 2023</p>
     </footer>
     <script type="module" src="./src/state.js"></script>
-    <script type="module" src="./components/shop.js"></script>
-    <script type="module" src="./components/cart.js"></script>
+    <script type="module" src="./components/shop/shop.js"></script>
+    <script type="module" src="./components/cart/cart.js"></script>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

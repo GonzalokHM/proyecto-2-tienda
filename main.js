@@ -1,10 +1,10 @@
 import "./style.css";
-import "./components/comments.js";
-import "./components/search.js";
-import "./components/cart.js";
+import "./components/comments/comments.js";
+import "./components/search/search.js";
+import "./components/cart/cart.js";
 
-import { showStock } from "./components/shop";
-import { toggleCart} from "./components/cart";
+import { showStock } from "./components/shop/shop";
+import { toggleCart, showCart} from "./components/cart/cart";
 import { state } from "./src/state";
 
 const navbarContainer = document.querySelector('.navbar-container');
@@ -21,11 +21,11 @@ window.addEventListener('load', function() {
     });
   }, 3000);
 });
+
 const menuIcon = document.querySelector('.menu-icon');
 const navbar = document.querySelector('#navbar');
 const nav = document.querySelector('.nav');
 const cartBtn = document.getElementById('cartBtn');
-
 cartBtn.addEventListener("click", toggleCart);
 
 
@@ -40,12 +40,35 @@ menuIcon.addEventListener('click', function() {
 
 state.init();
 
-window.addEventListener('load', showStock);
+// window.addEventListener('load', showStock);
 
-window.addEventListener('scroll', () => {
-  if (window.pageYOffset > navbarHeight) {
-    navbarContainer.classList.add('fixed');
-  } else {
-    navbarContainer.classList.remove('fixed');
-  }
+window.addEventListener('DOMContentLoaded', () => {
+  showStock();
+  showCart(state.getCart());
+  const addToCartButtons = document.querySelectorAll('.addToCartBtn');
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const itemId = parseInt(button.getAttribute('data-add-to-cart'));
+      const cart = state.getCart();
+      const updatedCart = state.addToCart(itemId, cart);
+      state.setCart(updatedCart);
+      showCart(updatedCart);
+      const itemToAdd = updatedCart.find(item => item.id === itemId);
+      const message = document.createElement('p');
+      message.textContent = `${itemToAdd.name} se ha añadido al carrito!`;
+      message.classList.add('success-message');
+      document.body.appendChild(message);
+      setTimeout(() => {
+        message.remove();
+      }, 2000);
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > navbarHeight) {
+      navbarContainer.classList.add('fixed');
+    } else {
+      navbarContainer.classList.remove('fixed');
+    }
+  });
 });
