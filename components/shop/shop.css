@@ -1,3 +1,14 @@
+section h2 {
+display: flex;
+justify-content: center;
+}
+
+ul{
+  padding-inline-start: 0;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
 #itemList {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -11,7 +22,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     padding: 1rem;
     text-align: center;
     background: rgba(255, 255, 255, 0.14);
@@ -27,6 +38,7 @@
     max-width: 250px;
     height: auto;
     border-radius: 46px;
+    border: 1px solid black;
   }
   
   .item h3 {
@@ -74,5 +86,15 @@
 }
 
   
-  
+  /* stars */
  
+.rating {
+    font-size: 24px;
+  }
+.star {
+    color: gray;
+  }
+  
+.star.filled {
+    color: rgb(211, 211, 9);
+  }

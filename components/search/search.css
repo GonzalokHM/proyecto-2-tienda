@@ -1,0 +1,16 @@
+.input{
+    padding-top: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide-search {
+    display: none;
+  }
+  
+  .show-search {
+    display: block;
+  }
+  
+  

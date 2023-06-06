@@ -150,7 +150,7 @@ button:focus-visible {
 .navbar {
   display: flex;
   align-items: center;
-  max-width: 960px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 1rem;
   background-color: #fff;
@@ -192,6 +192,7 @@ button:focus-visible {
   height: 2px;
   margin-bottom: 5px;
   background-color: #fff;
+  border: 1px solid black;
   transition: transform 0.3s ease-out;
 }
 
@@ -240,8 +241,6 @@ button:focus-visible {
   font-size: 18px;
   padding: 10px;
 }
-
-
 
 
 /*  */

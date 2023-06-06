@@ -1,8 +1,9 @@
 import "./style.css";
 import "./components/comments/comments.js";
-import "./components/search/search.js";
 import "./components/cart/cart.js";
 
+
+import { initializeSearch } from "./components/search/search";
 import { showStock } from "./components/shop/shop";
 import { toggleCart, showCart} from "./components/cart/cart";
 import { state } from "./src/state";
@@ -10,12 +11,15 @@ import { state } from "./src/state";
 const navbarContainer = document.querySelector('.navbar-container');
 const navbarHeight = navbarContainer.offsetHeight;
 
-window.addEventListener('load', function() {
+
+
+window.addEventListener('load', () => {
+  
   const loading = document.getElementById('welcome');
   loading.classList.add('show');
   const navbar = document.querySelector('.navbar-container');
-  setTimeout(function() {
-    $('#welcome').fadeOut(1000, function() {
+  setTimeout(() => {
+    $('#welcome').fadeOut(1000, () => {
       $(this).remove();
       navbar.classList.remove('welcome-hidden'); // elimina la clase 'hidden' del navbar
     });
@@ -29,12 +33,14 @@ const cartBtn = document.getElementById('cartBtn');
 cartBtn.addEventListener("click", toggleCart);
 
 
-menuIcon.addEventListener('click', function() {
+
+menuIcon.addEventListener('click', () => {
   menuIcon.classList.toggle('open');
   navbar.classList.toggle('open');
   nav.classList.toggle('hidden');
-
 });
+
+
 
 
 
@@ -44,6 +50,7 @@ state.init();
 
 window.addEventListener('DOMContentLoaded', () => {
   showStock();
+  initializeSearch()
   showCart(state.getCart());
   const addToCartButtons = document.querySelectorAll('.addToCartBtn');
   addToCartButtons.forEach(button => {
@@ -71,4 +78,5 @@ window.addEventListener('DOMContentLoaded', () => {
       navbarContainer.classList.remove('fixed');
     }
   });
+  
 });

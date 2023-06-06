@@ -2,10 +2,34 @@ import stringSimilarity from 'string-similarity';
 import { showStock } from '../shop/shop';
 import searchTemplate from './searchTemplate';
 import { state } from '../../src/state';
+import "./search.css"
 
 
-const productsSection = document.getElementById('products');
-productsSection.insertAdjacentHTML('afterbegin', searchTemplate);
+ const initializeSearch = () => {
+
+   const searchOptionsContainer = document.getElementById('searchOptionsContainer');
+   searchOptionsContainer.insertAdjacentHTML('afterbegin', searchTemplate);
+   const togleSearch = document.querySelector('.searchOpen');
+   const searchForm = document.querySelector('.search-form');
+
+// Ocultar el formulario de búsqueda al cargar la página
+searchForm.classList.add('hide-search');
+
+togleSearch.addEventListener('click', () => {
+  const isSearchVisible = searchForm.classList.contains('show-search');
+
+  // Si el menú está abierto y el formulario de búsqueda no está visible, mostrarlo
+  if (togleSearch.classList.contains('open') && !isSearchVisible) {
+    searchForm.classList.add('show-search');
+    searchForm.classList.remove('hide-search');
+    searchOptionsContainer.innerHTML = searchTemplate;
+  } else {
+    // De lo contrario, ocultar el formulario de búsqueda y limpiar el contenedor
+    searchForm.classList.remove('show-search');
+    searchForm.classList.add('hide-search');
+    searchOptionsContainer.innerHTML = '';
+  }
+});
 
 
 const searchInput = document.getElementById('searchInput');
@@ -76,3 +100,6 @@ maxPriceInput.addEventListener('input', () => {
 });
 categorySelect.addEventListener('change', filterItems);
 sortSelect.addEventListener('change', filterItems);
+};
+
+export {initializeSearch};

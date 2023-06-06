@@ -1,4 +1,5 @@
 const searchTemplate = `
+<div class= "search-form">
   <div class="input">
     <input type="text" id="searchInput" placeholder="Buscar producto por nombre" size="21">
   </div>
@@ -26,6 +27,7 @@ const searchTemplate = `
       <option value="stars-asc">Estrellas</option>
       <option value="stars-desc">Estrellas (descendente)</option>
     </select>
+  </div>
   </div>
 `;
 

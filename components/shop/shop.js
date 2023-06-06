@@ -19,12 +19,28 @@ const showStock = (filteredItems = stock) => {
         <button id="addToCartBtn-${item.id}" class="addToCartBtn" data-add-to-cart="${item.id}">Agregar al Carrito</button>
         <div class="description-container hidden">
           <p class="description">${item.description}</p>
-          <p class="stars">${item.stars}
+          <div class="rating" data-rating="${item.stars}"></div> 
         </div>
         <button class="showMoreBtn">+ Info</button>
       </div>
     `;
+    // stars
+    const ratingContainer = li.querySelector('.rating');
+    const starsNumber = parseInt(ratingContainer.getAttribute('data-rating'));
 
+    // Crea las estrellas según el número obtenido
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement('span');
+      star.className = 'star';
+      
+      if (i <= starsNumber) {
+        star.classList.add('filled');
+      }
+      
+      star.innerHTML = '&#9733;'; // Inserta el carácter de estrella
+      ratingContainer.appendChild(star);
+    }
+    
     const showDescriptionButtons = li.querySelectorAll('.showMoreBtn'); 
     showDescriptionButtons.forEach(button => {
       button.addEventListener('click', () => {
