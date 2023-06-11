@@ -1,9 +1,12 @@
 import './cart.css';
 import { state } from '../../src/state';
+import cTemplate from './cartTemplate.js';
 
+const cartContainer = document.getElementById('cartContainer');
+cartContainer.innerHTML=cTemplate;
 const cartList = document.getElementById('cartList');
 const cartCountElem = document.getElementById('cartCount');
-const cartContainer = document.getElementById('cartContainer');
+
 
 const showCart = () => {
   const cart = state.getCart();

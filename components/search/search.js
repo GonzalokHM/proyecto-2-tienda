@@ -16,20 +16,12 @@ import "./search.css"
 searchForm.classList.add('hide-search');
 
 togleSearch.addEventListener('click', () => {
-  const isSearchVisible = searchForm.classList.contains('show-search');
-
-  // Si el menú está abierto y el formulario de búsqueda no está visible, mostrarlo
-  if (togleSearch.classList.contains('open') && !isSearchVisible) {
-    searchForm.classList.add('show-search');
-    searchForm.classList.remove('hide-search');
-    searchOptionsContainer.innerHTML = searchTemplate;
-  } else {
-    // De lo contrario, ocultar el formulario de búsqueda y limpiar el contenedor
-    searchForm.classList.remove('show-search');
-    searchForm.classList.add('hide-search');
-    searchOptionsContainer.innerHTML = '';
-  }
+  searchForm.classList.toggle('show-search');
+  searchForm.classList.toggle('hide-search');
+  searchOptionsContainer.innerHTML = searchForm.classList.contains('show-search') ? searchTemplate : '';
 });
+
+
 
 
 const searchInput = document.getElementById('searchInput');

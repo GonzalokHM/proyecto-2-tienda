@@ -38,6 +38,15 @@ menuIcon.addEventListener('click', () => {
   menuIcon.classList.toggle('open');
   navbar.classList.toggle('open');
   nav.classList.toggle('hidden');
+  
+  const searchOptionsContainer = document.getElementById('searchOptionsContainer');
+  const searchForm = document.querySelector('.search-form');
+  // Ocultar el formulario de búsqueda si está visible
+  if (searchForm.classList.contains('show-search')) {
+    searchForm.classList.remove('show-search');
+    searchForm.classList.add('hide-search');
+    searchOptionsContainer.innerHTML = '';
+  }
 });
 
 
@@ -72,7 +81,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   window.addEventListener('scroll', () => {
-    if (window.pageYOffset > navbarHeight) {
+    if (window.scrollY > navbarHeight) {
       navbarContainer.classList.add('fixed');
     } else {
       navbarContainer.classList.remove('fixed');
