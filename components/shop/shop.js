@@ -2,8 +2,6 @@ import "./shop.css"
 import { state } from '../../src/state';
 
 const itemList = document.getElementById('itemList');
-const cartList = document.getElementById('cartList');
-const cartContainer = document.getElementById('cartContainer');
 const stock = state.getStock();
 
 const showStock = (filteredItems = stock) => {
@@ -52,11 +50,8 @@ const showStock = (filteredItems = stock) => {
   });
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  showStock();
-  cartList.addEventListener('click', () => {
-    cartContainer.classList.toggle('Cart-hidden');
-  });
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   showStock();
+// });
 
 export {showStock};

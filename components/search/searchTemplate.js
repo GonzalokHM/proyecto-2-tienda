@@ -1,16 +1,16 @@
 const searchTemplate = `
-<div class= "search-form">
+<div class= "search-form ">
   <div class="input">
     <input type="text" id="searchInput" placeholder="Buscar producto por nombre" size="21">
+    <i class="icon">🔍</i>
   </div>
   <div class="filter">
-    <h3>Filtrar por precio:</h3>
+    <i>💲</i>
     <input type="range" id="minPrice" min="0" max="3000" value="0">
     <input type="range" id="maxPrice" min="0" max="3000" value="3000">
     <p id="selectedPrice">Precio: $0 - $3000</p>
   </div>
   <div class="filter">
-    <h3>Filtrar por categoría:</h3>
     <select id="categorySelect">
       <option value="">Todas las categorías</option>
       <option value="solar">Solar</option>

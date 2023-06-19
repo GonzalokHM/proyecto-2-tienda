@@ -11,14 +11,16 @@ import "./search.css"
    searchOptionsContainer.insertAdjacentHTML('afterbegin', searchTemplate);
    const togleSearch = document.querySelector('.searchOpen');
    const searchForm = document.querySelector('.search-form');
+   searchForm.classList.add('hide-search');
 
 // Ocultar el formulario de búsqueda al cargar la página
-searchForm.classList.add('hide-search');
+
 
 togleSearch.addEventListener('click', () => {
   searchForm.classList.toggle('show-search');
   searchForm.classList.toggle('hide-search');
-  searchOptionsContainer.innerHTML = searchForm.classList.contains('show-search') ? searchTemplate : '';
+  // searchOptionsContainer.innerHTML = searchForm.classList.contains('show-search') ? searchTemplate : '' ;
+
 });
 
 

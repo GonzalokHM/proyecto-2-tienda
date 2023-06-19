@@ -1,23 +1,26 @@
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#cartBtn {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
 .cart-hidden {
     display: none;
   }
 
-  nav {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-#cartBtn {
-    display: block;
-    margin-left: auto;
-    margin-right: 0;
-    background-color: transparent;
-    border: none;
-    color: #333;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-  }
+#cartBtn:hover{
+  background-color:  rgba(91, 116, 0, 0.23);
+}
   #cartBtn.empty {
     display: none;
   }
@@ -25,13 +28,52 @@
   
   #cartContainer {
     position: absolute;
+    margin: 10px;
     top: 40px;
-    right: 0;
+   
     width: 300px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
     padding: 10px;
+    
+  border-radius: 20%;
+  background: rgba(255, 255, 255, .3);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border: 1.5px solid rgba(209, 213, 219, 0.3);
+ 
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  
+  #cartContainer h2{
+    background: rgba(0, 112, 116, 0.442);
+    border-radius: 10%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    margin: 10px;
+    
+  }
+  
+  #cartContainer h3{
+    background: rgba(0, 116, 12, 0.442);
+    border-radius: 10%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    margin: 10px;
+    
+  }
+  
+  #cartContainer p{
+    background: rgba(122, 122, 122, 0.442);
+    border-radius: 10%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    margin: 10px;
+
   }
   
   .addToCartBtn {
@@ -44,18 +86,8 @@
   }
 
   .addToCartBtn:hover {
-    background-color: #01ff12;
+    background-color: #00ff11b9;
     color:#ffffff 
 }
 
-.success-message {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 16px;
-}
+

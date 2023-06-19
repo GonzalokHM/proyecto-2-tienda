@@ -26,28 +26,26 @@ window.addEventListener('load', () => {
   }, 3000);
 });
 
-const menuIcon = document.querySelector('.menu-icon');
-const navbar = document.querySelector('#navbar');
-const nav = document.querySelector('.nav');
-const cartBtn = document.getElementById('cartBtn');
-cartBtn.addEventListener("click", toggleCart);
+  const menuIcon = document.querySelector('.menu-icon');
+  const navbar = document.querySelector('#navbar');
+  const nav = document.querySelector('.nav');
+  const cartBtn = document.getElementById('cartBtn');
+  cartBtn.addEventListener("click", toggleCart);
 
 
 
-menuIcon.addEventListener('click', () => {
-  menuIcon.classList.toggle('open');
-  navbar.classList.toggle('open');
-  nav.classList.toggle('hidden');
-  
-  const searchOptionsContainer = document.getElementById('searchOptionsContainer');
-  const searchForm = document.querySelector('.search-form');
-  // Ocultar el formulario de búsqueda si está visible
-  if (searchForm.classList.contains('show-search')) {
-    searchForm.classList.remove('show-search');
-    searchForm.classList.add('hide-search');
-    searchOptionsContainer.innerHTML = '';
-  }
-});
+  menuIcon.addEventListener('click', () => {
+    menuIcon.classList.toggle('open');
+    navbar.classList.toggle('open');  
+    nav.classList.toggle('hidden');
+
+    // Ocultar el formulario de búsqueda si está visible
+    const searchForm = document.querySelector('.search-form');
+    if (searchForm) {
+      searchForm.classList.add('hide-search');
+      searchForm.classList.remove('show-search');
+    }
+  });
 
 
 
@@ -71,12 +69,27 @@ window.addEventListener('DOMContentLoaded', () => {
       showCart(updatedCart);
       const itemToAdd = updatedCart.find(item => item.id === itemId);
       const message = document.createElement('p');
-      message.textContent = `${itemToAdd.name} se ha añadido al carrito!`;
+      const productText = document.createElement('span');
+      productText.textContent = itemToAdd.name;
+      const addText = document.createTextNode(' se ha añadido al carrito!');
+      message.appendChild(productText);
+      message.appendChild(addText);
+
+      productText.style.color = 'black'; 
+      productText.style.fontWeight = 'bold'; 
+
       message.classList.add('success-message');
       document.body.appendChild(message);
+
+      const blurBackground = document.createElement('div');
+      blurBackground.classList.add('fondo-translucido');
+      document.body.appendChild(blurBackground);
+      setTimeout(() => {
+        message.classList.add('resaltado');
+      }, 0);
       setTimeout(() => {
         message.remove();
-      }, 2000);
+      }, 2500);
     });
   });
 

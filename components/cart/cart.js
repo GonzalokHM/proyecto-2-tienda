@@ -36,6 +36,8 @@ const showCart = () => {
 };
 
 const toggleCart = () => {
+  const navContainer= document.querySelector('.navbar-container')
+  navContainer.classList.toggle('blurNone')
   cartContainer.classList.toggle('cart-hidden');
 };
 
@@ -44,8 +46,10 @@ cartCountElem.textContent = cartCount;
 
 if (state.getCart().length > 0) {
   cartContainer.classList.remove('cart-hidden');
+  // cartContainer.classList.remove('blurNone');
 } else {
   cartContainer.classList.add('cart-hidden');
+  // cartContainer.classList.add('blurNone');
 }
 
 cartList.addEventListener('click', (event) => {
