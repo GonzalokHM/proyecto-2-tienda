@@ -1,3 +1,10 @@
+ /* :root{
+
+
+ } */
+ 
+ 
+ 
  header, #welcome{
 
     height: 600px;
@@ -101,6 +108,7 @@ main,footer {
 ul,a,li {
   list-style: none;
   text-decoration:none;
+  color: black;
 }
 
 h1{
@@ -137,10 +145,7 @@ button:focus-visible {
    background: rgba(255, 255, 255, 0.14);
   border-radius: 20%; 
    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-
    backdrop-filter: blur(5px);
-   
-   
   border: 1px solid rgba(255, 255, 255, 0.12);
  
 }
@@ -247,23 +252,8 @@ cursor: pointer;
 
 }
 
-/*  */
 
-.input{
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
 
-form{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.form-label{
-  width: 80px;
-  margin-right: 1rem;
-}
 
 /* //suces mensage// */
 
@@ -296,3 +286,19 @@ form{
   opacity: 1;
 }
 
+@media screen and (max-width: 500px){
+  body {
+font-size: 14px;}
+}
+
+footer{
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+@media screen and (min-width: 1111px){
+  
+}

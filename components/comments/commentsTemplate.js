@@ -1,5 +1,6 @@
 const commentsTemplate = `
 <div id="comments-container">
+<div id="form-container">
   <form id="comments-form">
     <div class="input">
       <label for="name-input" class="form-label">Nombre:</label>
@@ -14,10 +15,11 @@ const commentsTemplate = `
       <textarea id="comment-input" name="comment" required></textarea>
     </div>
           
-    <button type="submit">Enviar</button>
+    <button type="submit">Send</button>
   </form>
   <button id="load-comments">Ver comentarios</button>
   <ul id="comments-list"></ul>
+  </div>
 </div>
 `;
 

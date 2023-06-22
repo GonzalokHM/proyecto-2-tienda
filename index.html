@@ -6,14 +6,14 @@
     <link rel="stylesheet" href="./style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>greenShop</title>
+    <title>GreenShop</title>
   </head>
   <body>
     <header>
-      <h1>🍃greenShop🌞</h1>
+      <h1>🍃GreenShop🌞</h1>
       <div id="welcome">
         <h2>
-          welcome to green world
+          Green The 🌍
         </h2>
       </div>
       <div class="navbar-container welcome-hidden">
@@ -27,7 +27,7 @@
           <ul class="nav hidden">
             <li><a href="#">Inicio</a></li>
             <li>
-              <a  href="#products" >Buscar</a>
+              <a  href="#products" >stock</a>
             </li>
             <li>
               <a id= "togleSearchContainer" class="searchOpen" role="button">filtrar</a>
@@ -43,15 +43,17 @@
     <main>
       <section id="products">
         <h2>Productos Disponibles</h2>
-        <ul id="itemList">
-        </ul>
+        <ul id="itemList"></ul>
+        <div id="currentPageNumber"></div>
+        <div id="totalPagesNumber"></div>
       </section>
       
       <section id="comments-container">
+        <h2>Reseñas</h2>
       </section>
     </main>
     <footer>
-      <p>&copy; greenShop 2023</p>
+      <p>&copy; GreenShop 2023</p>
     </footer>
     <script type="module" src="./src/state.js"></script>
     <script type="module" src="./components/shop/shop.js"></script>
