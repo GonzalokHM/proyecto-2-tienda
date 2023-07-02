@@ -2,6 +2,7 @@ import { stocks } from "./stock.js";
 
 const state = {
   stock: [],
+  filteredStock: [],
   cart: [],
 
   // Inicializa el estado del stock agregando la cantidad a cada elemento y creando una propiedad `selected` para marcar los elementos seleccionados.
@@ -109,7 +110,17 @@ removeFromCart: function(itemId) {
   getTotal: function () {
     // Devuelve el total del carrito.
     return this.cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  }
+  },
+
+  // Nueva función para obtener los elementos filtrados
+  getFilteredStock: function () {
+    return this.filteredStock.slice();
+  },
+
+  // Nueva función para establecer los elementos filtrados
+  setFilteredStock: function(filteredStock) {
+    this.filteredStock = filteredStock.slice();
+  },
 };
 
 state.init();

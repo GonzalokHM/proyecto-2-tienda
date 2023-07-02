@@ -2,20 +2,23 @@ import "./shop.css"
 import { state } from '../../src/state';
 
 const itemList = document.getElementById('itemList');
-const stock = state.getStock();
-
 const itemsPerPage = 8; // Cantidad de productos por página
 let currentPage = 1; // Página actual
+const stock = state.getStock();
 
 
 const showStock = (filteredItems = stock) => {
-  itemList.innerHTML = '';
-
+   filteredItems = state.getFilteredStock();// Obtener los filtros desde el estado
+  if (filteredItems.length === 0) {
+    filteredItems = stock; // Mostrar todo el stock si no hay elementos filtrados
+  }
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
   const currentPageItems = filteredItems.slice(startIndex, endIndex);
   
+  itemList.innerHTML = '';
+
   currentPageItems.forEach(item => {
     const li = document.createElement('li');
     li.innerHTML = `
@@ -62,20 +65,21 @@ const showStock = (filteredItems = stock) => {
    currentPage--;
    showStock(filteredItems);
   }
+  updatePageNumbers();
 };
 
 
 const nextPage = () => {
   currentPage++;
   showStock();
-  updatePageNumbers();
+  
 }
 
 const previousPage=()=> {
   if (currentPage > 1) {
     currentPage--;
     showStock();
-    updatePageNumbers();
+    
 
   }
 }
@@ -84,12 +88,14 @@ const goToPage = (pageNumber) => {
   if (pageNumber >= 1 && pageNumber <= getTotalPages()) {
     currentPage = pageNumber;
     showStock();
-    updatePageNumbers();
+    
   }
 };
 
 const getTotalPages = () => {
-  return Math.ceil(stock.length / itemsPerPage);
+  const filteredItems = state.getFilteredStock();
+  const totalItems = filteredItems.length > 0 ? filteredItems.length : stock.length;
+  return Math.ceil(totalItems / itemsPerPage);
 };
 
 const updatePageNumbers = () => {

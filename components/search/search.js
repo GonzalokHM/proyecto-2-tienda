@@ -71,6 +71,9 @@ const filterItems = () => {
     filteredItems.sort(sortOptions[sortOption]);
   }
 
+  state.setFilteredStock(filteredItems); // Almacenar los elementos filtrados en el estado
+
+
   showStock(filteredItems);
 };
 

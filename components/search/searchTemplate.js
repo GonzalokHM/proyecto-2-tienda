@@ -16,7 +16,7 @@ const searchTemplate = `
       <option value="solar">Solar</option>
       <option value="eolica">Eólica</option>
       <option value="baterias">Baterías</option>
-      <option value="otros">inversores</option>
+      <option value="inversores">inversores</option>
     </select>
   </div>
   <div class="sort">
