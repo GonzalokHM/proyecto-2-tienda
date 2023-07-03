@@ -53,6 +53,10 @@ window.addEventListener('load', () => {
 
 state.init();
 
+
+
+
+
 // window.addEventListener('load', showStock);
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -74,13 +78,13 @@ window.addEventListener('DOMContentLoaded', () => {
       const addText = document.createTextNode(' se ha añadido al carrito!');
       message.appendChild(productText);
       message.appendChild(addText);
-
+      
       productText.style.color = 'black'; 
       productText.style.fontWeight = 'bold'; 
-
+      
       message.classList.add('success-message');
       document.body.appendChild(message);
-
+      
       const blurBackground = document.createElement('div');
       blurBackground.classList.add('fondo-translucido');
       document.body.appendChild(blurBackground);
@@ -91,8 +95,10 @@ window.addEventListener('DOMContentLoaded', () => {
         message.remove();
       }, 2500);
     });
+    
   });
-
+ 
+  
   window.addEventListener('scroll', () => {
     if (window.scrollY > navbarHeight) {
       navbarContainer.classList.add('fixed');
@@ -100,5 +106,4 @@ window.addEventListener('DOMContentLoaded', () => {
       navbarContainer.classList.remove('fixed');
     }
   });
-  
 });

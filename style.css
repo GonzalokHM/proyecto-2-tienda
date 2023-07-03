@@ -4,7 +4,6 @@
  } */
  
  
- 
  header, #welcome{
 
     height: 600px;
@@ -286,10 +285,19 @@ cursor: pointer;
   opacity: 1;
 }
 
+
+/* Cambiar el color solo de los caracteres "$" en verde */
+.green-dollar {
+  color: green;
+}
+
+
+/* medias */
 @media screen and (max-width: 500px){
   body {
 font-size: 14px;}
 }
+
 
 footer{
   display: flex;

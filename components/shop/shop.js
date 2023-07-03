@@ -25,7 +25,7 @@ const showStock = (filteredItems = stock) => {
       <div class="item">
         <img src="${item.image}" alt="${item.name}" />
         <h3>${item.name}</h3>
-        <p>${item.price}</p>
+        <p>${item.price}<span class="green-dollar">$</span></p>
         <button id="addToCartBtn-${item.id}" class="addToCartBtn" data-add-to-cart="${item.id}">Agregar al Carrito</button>
         <div class="description-container hidden">
           <p class="description">${item.description}</p>

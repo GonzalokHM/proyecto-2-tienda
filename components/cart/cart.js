@@ -5,28 +5,29 @@ import cTemplate from './cartTemplate.js';
 const cartContainer = document.getElementById('cartContainer');
 cartContainer.innerHTML=cTemplate;
 const cartList = document.getElementById('cartList');
-const cartCountElem = document.getElementById('cartCount');
 
 
 const showCart = () => {
   const cart = state.getCart();
   const total = state.getTotal();
-
+  console.log('Cart:', cart); // Comprobar el contenido del carrito
+  console.log('Total:', total); // Comprobar el total
   cartList.innerHTML = '';
   cart.forEach((item) => {
     const li = document.createElement('li');
     li.innerHTML = `
-      <div class="cart-item">
-        <h3>${item.name}</h3>
-        <p>Cantidad: ${item.quantity}</p>
-        <button class="removeFromCartBtn" data-remove-from-cart="${item.id}">Eliminar</button>
-      </div>
+    <div class="cart-item">
+    <h3>${item.name}</h3>
+    <p>Cantidad: ${item.quantity}</p>
+    <button class="removeFromCartBtn" data-remove-from-cart="${item.id}">Eliminar</button>
+    </div>
     `;
     cartList.appendChild(li);
   });
-
-  const cartCount = total.quantity;
-  cartCountElem.textContent = cartCount;
+  
+  
+  const cartCountElem = document.getElementById('cartCount');
+  cartCountElem.innerHTML = `${total.toFixed(2)}<span class="green-dollar">$</span>`;
 
   if (cart.length > 0) {
     cartList.style.display = 'block';
@@ -41,8 +42,6 @@ const toggleCart = () => {
   cartContainer.classList.toggle('cart-hidden');
 };
 
-const cartCount = state.getTotal().quantity;
-cartCountElem.textContent = cartCount;
 
 if (state.getCart().length > 0) {
   cartContainer.classList.remove('cart-hidden');
