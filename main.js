@@ -63,40 +63,8 @@ window.addEventListener('DOMContentLoaded', () => {
   showStock();
   initializeSearch()
   showCart(state.getCart());
-  const addToCartButtons = document.querySelectorAll('.addToCartBtn');
-  addToCartButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const itemId = parseInt(button.getAttribute('data-add-to-cart'));
-      const cart = state.getCart();
-      const updatedCart = state.addToCart(itemId, cart);
-      state.setCart(updatedCart);
-      showCart(updatedCart);
-      const itemToAdd = updatedCart.find(item => item.id === itemId);
-      const message = document.createElement('p');
-      const productText = document.createElement('span');
-      productText.textContent = itemToAdd.name;
-      const addText = document.createTextNode(' se ha añadido al carrito!');
-      message.appendChild(productText);
-      message.appendChild(addText);
-      
-      productText.style.color = 'black'; 
-      productText.style.fontWeight = 'bold'; 
-      
-      message.classList.add('success-message');
-      document.body.appendChild(message);
-      
-      const blurBackground = document.createElement('div');
-      blurBackground.classList.add('fondo-translucido');
-      document.body.appendChild(blurBackground);
-      setTimeout(() => {
-        message.classList.add('resaltado');
-      }, 0);
-      setTimeout(() => {
-        message.remove();
-      }, 2500);
-    });
-    
-  });
+
+  
  
   
   window.addEventListener('scroll', () => {

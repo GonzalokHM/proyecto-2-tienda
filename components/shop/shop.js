@@ -1,5 +1,6 @@
 import "./shop.css"
 import { state } from '../../src/state';
+import { showCart } from "../cart/cart"; 
 
 const itemList = document.getElementById('itemList');
 const itemsPerPage = 8; // Cantidad de productos por página
@@ -7,8 +8,11 @@ let currentPage = 1; // Página actual
 const stock = state.getStock();
 
 
-const showStock = (filteredItems = stock) => {
-   filteredItems = state.getFilteredStock();// Obtener los filtros desde el estado
+const showStock = () => {
+   let filteredItems = state.getFilteredStock();// Obtener los filtros desde el estado
+   console.log('filteredItems',filteredItems)
+   console.log('stock',stock)
+
   if (filteredItems.length === 0) {
     filteredItems = stock; // Mostrar todo el stock si no hay elementos filtrados
   }
@@ -34,6 +38,8 @@ const showStock = (filteredItems = stock) => {
         <button class="showMoreBtn">+ Info</button>
       </div>
     `;
+
+    
     // stars
     const ratingContainer = li.querySelector('.rating');
     const starsNumber = parseInt(ratingContainer.getAttribute('data-rating'));
@@ -59,6 +65,41 @@ const showStock = (filteredItems = stock) => {
       });
     });
     itemList.appendChild(li);
+  });
+  const addToCartButtons = itemList.querySelectorAll('.addToCartBtn');
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const itemId = parseInt(button.getAttribute('data-add-to-cart'));
+      const cart = state.getCart();
+      const updatedCart = state.addToCart(itemId, cart);
+      state.setCart(updatedCart);
+      showCart(updatedCart);
+      
+      const itemToAdd = updatedCart.find(item => item.id === itemId);
+      const message = document.createElement('p');
+      const productText = document.createElement('span');
+      productText.textContent = itemToAdd.name;
+      const addText = document.createTextNode(' se ha añadido al carrito!');
+      message.appendChild(productText);
+      message.appendChild(addText);
+      
+      productText.style.color = 'black'; 
+      productText.style.fontWeight = 'bold'; 
+      
+      message.classList.add('success-message');
+      document.body.appendChild(message);
+      
+      const blurBackground = document.createElement('div');
+      blurBackground.classList.add('fondo-translucido');
+      document.body.appendChild(blurBackground);
+      setTimeout(() => {
+        message.classList.add('resaltado');
+      }, 0);
+      setTimeout(() => {
+        message.remove();
+      }, 2500);
+    });
+    
   });
   // Verificar si la página actual está más allá del número total de páginas
   if (startIndex >= filteredItems.length) {

@@ -1,13 +1,15 @@
 import './cart.css';
 import { state } from '../../src/state';
 import cTemplate from './cartTemplate.js';
+import { showPurchaseContainer } from './purchase';
+
 
 const cartContainer = document.getElementById('cartContainer');
 cartContainer.innerHTML=cTemplate;
-const cartList = document.getElementById('cartList');
 
 
 const showCart = () => {
+  const cartList = document.getElementById('cartList');
   const cart = state.getCart();
   const total = state.getTotal();
   console.log('Cart:', cart); // Comprobar el contenido del carrito
@@ -65,5 +67,8 @@ emptyCartBtn.addEventListener('click', () => {
   state.clearCart();
   showCart();
 });
+
+const purchaseBtn = document.getElementById('purchase');
+purchaseBtn.addEventListener('click', showPurchaseContainer);
 
 export { toggleCart, showCart };
