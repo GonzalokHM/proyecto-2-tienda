@@ -21,7 +21,7 @@ const showCart = () => {
     <div class="cart-item">
     <h3>${item.name}</h3>
     <p>Cantidad: ${item.quantity}</p>
-    <button class="removeFromCartBtn" data-remove-from-cart="${item.id}">Eliminar</button>
+    <button class="removeFromCartBtn" data-remove-from-cart="${item.id}"><span class="removeIcon">&#x2716;</span></button>
     </div>
     `;
     cartList.appendChild(li);

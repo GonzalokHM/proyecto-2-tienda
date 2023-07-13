@@ -25,11 +25,11 @@ ul{
     justify-content: space-around;
     padding: 1rem;
     text-align: center;
-    background: rgba(255, 255, 255, 0.14);
+    background: var(--cd-background-color-n-002);
     border-radius: 46px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px var(--cd-box-shadow-color-n-003);
     backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid var(--cd-border-color-n-004);
   }
   
   .item img {
@@ -37,7 +37,7 @@ ul{
     max-width: 250px;
     height: auto;
     border-radius: 46px;
-    border: 1px solid black;
+    border: 1px solid var(--pr-color-n-000);
   }
   
   .item h3 {
@@ -59,8 +59,8 @@ ul{
 
   
   .showMoreBtn {
-    background-color: #2ecc71;
-    color: rgb(0, 0, 0);
+    background-color: var(--sc-color-n-010);
+    color: var(--pr-color-n-000);
     border: none;
     padding: 10px;
     margin-bottom: 10px;
@@ -73,11 +73,11 @@ ul{
     font-size: 24px;
   }
 .star {
-    color: gray;
+    color: var(--pr-color-n-0002);
   }
   
 .star.filled {
-    color: rgb(211, 211, 9);
+    color: var(--sc-star-color-n-050);
   }
 
 .current-page {
@@ -87,8 +87,8 @@ ul{
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background-color: green;
-    color: white;
+    background-color: var(--sc-color-n-020);
+    color: var(--pr-color-n-100);
     text-align: center;
     line-height: 25px;
   }
@@ -101,11 +101,11 @@ ul{
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 5%;
-  background: rgba(255, 255, 255, 0.14);
+  background: var(--cd-background-color-n-002);
   border-radius: 30%; 
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px var(--cd-box-shadow-color-n-003);
   backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--cd-border-color-n-004);
   align-items: baseline;
 
 }
@@ -122,8 +122,8 @@ ul{
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background-color: whitesmoke;
-  color: black;
+  background-color: var(--pr-color-n-100);
+  color: var(--pr-color-n-000);
   text-align: center;
   line-height: 25px;
   border: none;
@@ -140,8 +140,8 @@ ul{
 
 #currentPageNumber a.previous-button:hover,
 #currentPageNumber a.next-button:hover {
-  background-color: green;
-  color: whitesmoke;
+  background-color: var(--sc-color-n-020);
+  color: var(--pr-color-n-100);
   transition: background-color 0.3s ease, color 0.3s ease;
   /* Estilos adicionales para el estado de "hover" */
 }

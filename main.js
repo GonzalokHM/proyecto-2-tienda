@@ -2,7 +2,6 @@ import "./style.css";
 import "./components/comments/comments.js";
 import "./components/cart/cart.js";
 
-
 import { initializeSearch } from "./components/search/search";
 import { showStock } from "./components/shop/shop";
 import { toggleCart, showCart} from "./components/cart/cart";

@@ -4,23 +4,37 @@ nav {
   justify-content: flex-end;
 }
 
-#cartBtn {
+.cartIcon, #cartBtn {
   display: block;
   margin-left: auto;
   margin-right: 0;
-  background-color: transparent;
-  border: none;
-  font-size: 16px;
+  background-color: var(--cd-background-color-n-002-2);
+  box-shadow: var(--cd-box-shadow-color-n-003);
+  border: 1px solid var(--sc-color-n-020);
+  border-radius: 8px;
+  font-size: 24px;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
+.cartIcon:hover{
+  background-color:  var(--sc-comentbtn-color-n-060);
+}
+
+.navbar-container.fixed .cartIcon{
+  margin-right: 19px;
+}
+
+#cartBtn{
+  border: 1px solid transparent;
+  padding: 0;
+}
+
 .cart-hidden {
     display: none;
   }
 
-#cartBtn:hover{
-  background-color:  rgba(91, 116, 0, 0.23);
-}
   #cartBtn.empty {
     display: none;
   }
@@ -35,50 +49,79 @@ nav {
     padding: 10px;
     
   border-radius: 20%;
-  background: rgba(255, 255, 255, .3);
+  background: var(--cd-background-color-n-002-2);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   border: 1.5px solid rgba(209, 213, 219, 0.3);
  
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--cd-border-color-n-004);
   }
   
   #cartContainer h2{
-    background: rgba(0, 112, 116, 0.442);
-    border-radius: 10%;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: var(--cd-background-cartexth2-color-n-012);
+    border-radius: 8px;
+    box-shadow: 0 8px 30px var(--cd-box-shadow-color-n-003);
     backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid var(--cd-border-color-n-004);
     margin: 10px;
     
   }
   
   #cartContainer h3{
-    background: rgba(0, 116, 12, 0.442);
-    border-radius: 10%;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: var(--cd-background-cartexth3-color-n-022);
+    border-radius: 20px;
+    box-shadow: 0 20px 30px var(--cd-box-shadow-color-n-003);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid var(--cd-border-color-n-004);
     margin: 10px;
     
   }
   
   #cartContainer p{
-    background: rgba(122, 122, 122, 0.442);
-    border-radius: 10%;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: var(--cd-background-cartextp-color-n-032);
+    border-radius: 14px;
+    box-shadow: 8px 0 0 var(--cd-box-shadow-cartextp-color-n-005), -8px 0 0 var(--cd-box-shadow-cartextp-color-n-005),0 14px 30px var(--cd-box-shadow-color-n-003);
     backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid var(--cd-border-color-n-004);
     margin: 10px;
+  }
 
+  .total{
+    box-shadow: 8px 0 0 var(--cd-box-shadow-cartotal-color-n-006), -8px 0 0 var(--cd-box-shadow-cartotal-color-n-006),0 14px 30px var(--cd-box-shadow-color-n-003)!important;
+  }
+
+  .cart-item{
+    position: relative
+  }
+
+  .removeFromCartBtn{
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--cd-border-color-n-004);
+    margin: 5px;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    border-radius: 50%;
+    background-color: var(--sc-x-color-n-040);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--pr-color-n-100);
+    position: absolute;
+    top: 29px;
+    right: 10px;
+    cursor: pointer;
   }
   
+.removeIcon{
+  font-size: 12px;
+}
+
   .addToCartBtn {
-    background-color: #ffffffcf;
-    color: rgb(0, 0, 0);
+    background-color: var(--pr-color-n-100);
+    color: var(--pr-color-n-000);
     border: none;
     margin-bottom: 10px;
     padding: 0.5rem 1rem;
@@ -86,13 +129,8 @@ nav {
   }
 
   .addToCartBtn:hover {
-    background-color: #00ff11b9;
-    color:#ffffff 
-}
-
-
-.green-dollar {
-  color: green;
+    background-color: var(--sc-color-n-010);
+    color:var(--pr-color-n-100)
 }
 
 
@@ -100,30 +138,54 @@ nav {
 
 #purchaseContainer {
   display: none;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-flow: column;
+  align-items: center;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
   z-index: 999;
-  background: rgba(255, 255, 255, 0.14);
+  background: var(--cd-background-purchase-color-n-052);
     border-radius: 46px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px var(--cd-box-shadow-color-n-003);
     backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid var(--cd-border-color-n-004);
 }
+
+
 
 #purchaseCloseBtn {
   position: absolute;
   top: 10px;
   left: 10px;
   cursor: pointer;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--sc-x-color-n-040);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--pr-color-n-100);
 }
 
-#purchaseProducts {
-  margin-top: 20px;
+.closeIcon {
+  font-size: 12px;
+}
+
+#purchaseProducts, #purchaseContent h2{
+  background: var(--cd-background-color-n-002);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px var(--cd-box-shadow-color-n-003);
+    backdrop-filter: blur(1px);
+    border: 1px solid var(--cd-border-color-n-004);
+    margin-top: 20px;
+}
+
+#purchaseContent h2{
+  font-size: 1.5rem;
 }
 
 #purchaseProducts p {
@@ -134,32 +196,40 @@ nav {
   display: block;
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--cd-background-comentbtn-color-n-042);
+  color: var(--pr-color-n-100);
   border: none;
-  border-radius: 4px;
+  border-radius: 14px;
   cursor: pointer;
 }
 
 #commentsShoppingBtn:hover {
-  background-color: #0056b3;
+  background-color: var(--sc-color-n-020);
 }
 
-#purchaseCloseBtn{
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background-color: red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: white;
+.quote {
+  
+  right: 0;
+  padding: 10px;
+  margin:20px 0 0 0;
+  background: var(--cd-background-color-n-002);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px var(--cd-box-shadow-color-n-003);
+    backdrop-filter: blur(1px);
+    border: 1px solid var(--cd-border-color-n-004);
+    cursor: none;
 }
 
-.closeIcon {
-  font-size: 12px;
+.quote p {
+  margin: 0;
 }
+
+.author {
+  text-align: right;
+  font-style: italic;
+  color: var(--pr-color-n-0002);
+}
+
 
 .flex{
 display: flex;

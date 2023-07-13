@@ -18,6 +18,9 @@ const commentsTemplate = `
     <button type="submit">Send</button>
   </form>
   <button id="load-comments">Ver comentarios</button>
+    <div id="loadingIndicator" style="display: none;">
+    <div class="loader"></div>
+    </div>
   <ul id="comments-list"></ul>
   </div>
 </div>

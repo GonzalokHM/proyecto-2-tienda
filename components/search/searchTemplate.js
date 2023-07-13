@@ -20,8 +20,8 @@ const searchTemplate = `
     </select>
   </div>
   <div class="sort">
-    <h3>Ordenar por:</h3>
     <select id="sortSelect">
+      <option value="">ordenar por:</option>
       <option value="price-asc">Precio</option>
       <option value="price-desc">Precio (descendente)</option>
       <option value="stars-asc">Estrellas</option>

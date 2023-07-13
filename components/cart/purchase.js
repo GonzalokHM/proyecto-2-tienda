@@ -1,6 +1,7 @@
 import purchaseTemplate from './purchaseTemplate.js';
 import { state } from '../../src/state';
 import commentsTemplate from '../comments/commentsTemplate.js';
+import quotes from './quotesBag.js';
 
 const cartContainer = document.getElementById('cartContainer');
 cartContainer.insertAdjacentHTML('afterend', purchaseTemplate);
@@ -29,19 +30,22 @@ const showPurchaseContainer = () => {
     }
     const cart = state.getCart();
     
+    
     purchaseProducts.innerHTML = cart
     .map((item) => `<p>${item.name} - Cantidad: ${item.quantity}</p>`)
     .join('');
+    randomQuotes()
     
     purchaseContainer.style.display = 'flex';
     cartContainer.classList.add('cart-hidden')
-
+    
     const cartBtn = document.getElementById('cartBtn');
     cartBtn.disabled = true;
-
+    
     setTimeout(() => {
         confettiContainer.innerHTML = '';
     }, 5000); // Desaparecer el confeti después de 5 segundos
+
 };
 
 
@@ -74,6 +78,15 @@ const continueShopping = () => {
         loadCommentsButton.style.display = 'none';
     }
 };
+
+const randomQuotes=()=>{
+    const quoteTextElement = document.querySelector('.textQuote');
+    const quoteAuthorElement = document.querySelector('.author');
+    
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    quoteTextElement.textContent = randomQuote.texto;
+    quoteAuthorElement.textContent = randomQuote.autor;
+}
 
 purchaseCloseBtn.addEventListener('click', closePurchaseContainer);
 commentsShoppingBtn.addEventListener('click', continueShopping);

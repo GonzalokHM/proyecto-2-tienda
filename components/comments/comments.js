@@ -5,16 +5,21 @@ const commentsContainer = document.getElementById('comments-container');
 commentsContainer.innerHTML = commentsTemplate;
 
 
-const getcommentsCardTemplate = (name, email, body,) => `
+const getcommentsCardTemplate = (name, email, body) => `
 <h3>${name}</h3>
-<p>email: ${email}</p>
-<p>comment: ${body}</p>
+<p><span class="label">email:</span> ${email}</p>
+<p><span class="label">comment:</span> ${body}</p>
 `;
 
 let commentsFromAPI = [];
 
 const getComments = async () => {
   try {
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const loadCommentsButton = document.getElementById('load-comments');
+    loadingIndicator.style.display = 'flex'; // Mostrar indicador de carga
+    loadCommentsButton.disabled = true; // Deshabilitar el botón de carga mientras se realiza la petición
+
     const response = await fetch('https://jsonplaceholder.typicode.com/posts/1/comments');
     commentsFromAPI = await response.json();
     showComments();
@@ -24,6 +29,13 @@ const getComments = async () => {
     const img = document.createElement('img');
     img.src = 'https://1.bp.blogspot.com/_FUCD-ZQp98g/TD1hkNv9knI/AAAAAAAACDY/gQZWdJh4qwo/s1600/problema_tecnico.jpg';
     document.body.appendChild(img);
+  }
+  finally {
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const loadCommentsButton = document.getElementById('load-comments');
+
+    loadingIndicator.style.display = 'none'; // Ocultar indicador de carga
+    loadCommentsButton.disabled = false; // Habilitar el botón de carga nuevamente
   }
 };
 
@@ -46,7 +58,7 @@ const showComments = () => {
   allComments.forEach(comment => {
     const commentElement = document.createElement('div');
     commentElement.classList.add('comment');
-    commentElement.innerHTML = getcommentsCardTemplate(comment.name, comment.email, comment.text);
+    commentElement.innerHTML = getcommentsCardTemplate(comment.name, comment.email, comment.body);
     commentsList.appendChild(commentElement);
   });
 };
@@ -72,5 +84,10 @@ commentsForm.addEventListener('submit', async event => {
     emailInput.value = '';
     textInput.value = '';
   }});
-    showComments();
+  
+  const textArea = commentsForm.querySelector('textarea');
+  textArea.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+  });
 
