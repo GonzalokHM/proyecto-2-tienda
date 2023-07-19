@@ -1,9 +1,27 @@
 import "./comments.css";
 import commentsTemplate from "./commentsTemplate";
+import templateForm from "./commentsTemplateForm";
 
 const commentsContainer = document.getElementById('comments-container');
 commentsContainer.innerHTML = commentsTemplate;
 
+const loadingFormButton = document.getElementById('loadingForm');
+loadingFormButton.addEventListener('click', () => {
+  const formContainer = document.getElementById('form-container');
+  formContainer.innerHTML = templateForm;
+
+  const commentsForm = document.getElementById('comments-form');
+  commentsForm.addEventListener('submit', handleFormSubmit);
+  
+});
+
+document.addEventListener('input', event => {
+  if (event.target && event.target.matches('#comments-form textarea')) {
+    const textarea = event.target;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  }
+});
 
 const getcommentsCardTemplate = (name, email, body) => `
 <h3>${name}</h3>
@@ -39,17 +57,13 @@ const getComments = async () => {
   }
 };
 
-
-
 const loadCommentsButton = document.querySelector('#load-comments');
-
 loadCommentsButton.addEventListener('click', () => {
 getComments();
 });
 
 const state = { comments: [] }; // Creamos un objeto para almacenar los comentarios
 
-const commentsForm = document.getElementById('comments-form');
 const commentsList = document.getElementById('comments-list');
 
 const showComments = () => {
@@ -68,26 +82,23 @@ const isValidEmail = (email) => {
   return emailRegex.test(email);
 };
 
-
-commentsForm.addEventListener('submit', async event => {
+ const handleFormSubmit = async (event) => {
+  const commentsForm = document.getElementById('comments-form');
   event.preventDefault();
   const nameInput = commentsForm.querySelector('input[name="name"]');
   const emailInput = commentsForm.querySelector('input[name="email"]');
   const textInput = commentsForm.querySelector('textarea[name="comment"]');
   const name = nameInput.value.trim();
   const email = emailInput.value.trim();
-  const text = textInput.value.trim();
-  if (name && text && isValidEmail(email)) {
-    state.comments.push({ name, email, text });
+  console.log(textInput.value)
+  const body = textInput.value.trim();
+  if (name && body && isValidEmail(email)) {
+    state.comments.push({ name, email, body });
     showComments();
     nameInput.value = '';
     emailInput.value = '';
     textInput.value = '';
-  }});
-  
-  const textArea = commentsForm.querySelector('textarea');
-  textArea.addEventListener('input', function() {
-    this.style.height = 'auto';
-    this.style.height = this.scrollHeight + 'px';
-  });
+  }
+}
 
+export {handleFormSubmit};

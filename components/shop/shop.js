@@ -10,8 +10,6 @@ const stock = state.getStock();
 
 const showStock = () => {
    let filteredItems = state.getFilteredStock();// Obtener los filtros desde el estado
-   console.log('filteredItems',filteredItems)
-   console.log('stock',stock)
 
   if (filteredItems.length === 0) {
     filteredItems = stock; // Mostrar todo el stock si no hay elementos filtrados

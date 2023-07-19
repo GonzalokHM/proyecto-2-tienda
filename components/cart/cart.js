@@ -12,8 +12,6 @@ const showCart = () => {
   const cartList = document.getElementById('cartList');
   const cart = state.getCart();
   const total = state.getTotal();
-  console.log('Cart:', cart); // Comprobar el contenido del carrito
-  console.log('Total:', total); // Comprobar el total
   cartList.innerHTML = '';
   cart.forEach((item) => {
     const li = document.createElement('li');

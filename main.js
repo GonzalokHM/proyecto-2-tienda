@@ -10,20 +10,20 @@ import { state } from "./src/state";
 const navbarContainer = document.querySelector('.navbar-container');
 const navbarHeight = navbarContainer.offsetHeight;
 
+// Mostrar el "welcome" al inicio
+const loading = document.getElementById('welcome');
+loading.classList.add('show');
 
+// Mostrar el contenido y otros elementos después de cargar la página
+window.addEventListener('DOMContentLoaded', () => {
+  // Ocultar el "welcome" cuando la página esté lista
+  $('#welcome').fadeOut(3000, () => {
+    $(loading).remove();
+    navbarContainer.classList.remove('welcome-hidden'); // elimina la clase 'hidden' del navbar
+  });
 
-window.addEventListener('load', () => {
-  
-  const loading = document.getElementById('welcome');
-  loading.classList.add('show');
-  const navbar = document.querySelector('.navbar-container');
-  setTimeout(() => {
-    $('#welcome').fadeOut(1000, () => {
-      $(this).remove();
-      navbar.classList.remove('welcome-hidden'); // elimina la clase 'hidden' del navbar
-    });
-  }, 3000);
-});
+  // Mostrar todo el contenido
+  document.body.style.visibility = "visible";
 
   const menuIcon = document.querySelector('.menu-icon');
   const navbar = document.querySelector('#navbar');
@@ -53,24 +53,18 @@ window.addEventListener('load', () => {
 state.init();
 
 
-
-
-
-// window.addEventListener('load', showStock);
-
-window.addEventListener('DOMContentLoaded', () => {
-  showStock();
-  initializeSearch()
-  showCart(state.getCart());
-
-  
- 
-  
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > navbarHeight) {
-      navbarContainer.classList.add('fixed');
-    } else {
-      navbarContainer.classList.remove('fixed');
-    }
-  });
+window.addEventListener('scroll', () => {
+  if (window.scrollY > navbarHeight) {
+    navbarContainer.classList.add('fixed');
+  } else {
+    navbarContainer.classList.remove('fixed');
+  }
 });
+
+
+
+
+showStock();
+initializeSearch()
+showCart(state.getCart());
+})

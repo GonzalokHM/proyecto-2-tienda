@@ -1,7 +1,8 @@
 import purchaseTemplate from './purchaseTemplate.js';
 import { state } from '../../src/state';
-import commentsTemplate from '../comments/commentsTemplate.js';
+import templateForm from '../comments/commentsTemplateForm.js';
 import quotes from './quotesBag.js';
+import { handleFormSubmit } from '../comments/comments.js';
 
 const cartContainer = document.getElementById('cartContainer');
 cartContainer.insertAdjacentHTML('afterend', purchaseTemplate);
@@ -10,7 +11,7 @@ cartContainer.insertAdjacentHTML('afterend', purchaseTemplate);
 const purchaseContainer = document.getElementById('purchaseContainer');
 const purchaseProducts = purchaseContainer.querySelector('#purchaseProducts');
 const purchaseCloseBtn = purchaseContainer.querySelector('#purchaseCloseBtn');
-const commentsShoppingBtn = purchaseContainer.querySelector('#commentsShoppingBtn');
+const commentsPurchaseBtn = purchaseContainer.querySelector('#commentsPurchaseBtn');
 
 const showPurchaseContainer = () => {   
     // Agregar efecto de confeti
@@ -67,17 +68,21 @@ const closePurchaseContainer = () => {
     cartBtn.disabled = false;
 };
 
-const continueShopping = () => {
-    const purchaseContainer = document.getElementById('purchaseContainer');
-    purchaseContainer.innerHTML = '<h2>Dejar un comentario</h2>' + '<div id="purchaseCloseBtn"><span class="closeIcon">&#x2716;<span></div>' 
-    + commentsTemplate;
-    const purchaseCloseBtn = purchaseContainer.querySelector('#purchaseCloseBtn');
-    purchaseCloseBtn.addEventListener('click', closePurchaseContainer);
-    const loadCommentsButton = document.getElementById('load-comments');
-    if (loadCommentsButton.closest('#purchaseContainer')) {
-        loadCommentsButton.style.display = 'none';
-    }
+const continueComment = () => {
+  const commentsContainer = document.createElement('div');
+  commentsContainer.classList.add('commentsContainerPurchase');
+  commentsContainer.innerHTML = '<h2>Dejar un comentario</h2>' + '<div id="purchaseCloseBtn"><span class="closeIcon">&#x2716;<span></div>' 
+    + templateForm;
+
+  const commentsForm = commentsContainer.querySelector('#comments-form');
+  commentsForm.addEventListener('submit', handleFormSubmit);
+
+  const purchaseCloseBtn = commentsContainer.querySelector('#purchaseCloseBtn');
+  purchaseCloseBtn.addEventListener('click', closePurchaseContainer);
+
+  purchaseContainer.appendChild(commentsContainer);
 };
+
 
 const randomQuotes=()=>{
     const quoteTextElement = document.querySelector('.textQuote');
@@ -89,6 +94,6 @@ const randomQuotes=()=>{
 }
 
 purchaseCloseBtn.addEventListener('click', closePurchaseContainer);
-commentsShoppingBtn.addEventListener('click', continueShopping);
+commentsPurchaseBtn.addEventListener('click', continueComment);
 
 export { showPurchaseContainer };

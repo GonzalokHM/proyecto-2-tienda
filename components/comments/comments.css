@@ -2,40 +2,72 @@
     margin-bottom: -4px;
     padding: 19px;
     background-color:var(--cd-background-color-n-002-2);
-    border-radius: 70px;
+    border-radius: 70px;;
+  box-shadow: 0 4px 70px var(--cd-box-shadow-color-n-003);
+  backdrop-filter: blur(5px);
   }
   .comment p {
-    margin: 0;
+    font-family: 'Orbitron', sans-serif
   }
 
   .input{
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
+    justify-content: center;
+  }
+
+  #name-input, #email-input{
+    text-align: center;
+  }
+
+  .commentsContainerPurchase input{
+    width: -webkit-fill-available;
+  }
+  .commentsContainerPurchase input[name="name"]{
+width: 60%;
   }
   
   form{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    justify-content: space-between;
     margin: 5%;
   }
-  .form-label{
-    width: 80px;
-    margin-right: 0.5rem;
-  }
+
 #comments-container{
-  margin: 3%;
+  margin: 8% 0 0 0;
+    display: flex;
+    flex-direction: column;
 }
+
+#commentsPurchaseBtn{
+  margin-top: 20px;
+}
+
+
 #form-container button{
   border-radius: 20%;
   margin: auto;
+}
+
+#loadingForm{
+  margin: 0 70px 10px 70px;
 }
 #load-comments{
   background-color: var(--sc-comentbtn-color-n-060);
   color: var(--pr-color-n-000);
   transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 10px 15PX 0 15px;
+}
+#loadingForm, #commentsPurchaseBtn{
+ background-color: var(--sc-comentbtn-color-n-063);
+ color: var(--pr-color-n-000);
+}
+#loadingForm:hover, #commentsPurchaseBtn:hover{
+  background-color: var(--sc-comentbtn-color-n-062);
+  color: var(--pr-color-n-100);
+  transition: background-color 0.3s ease, color 0.3s ease; 
 }
 #load-comments:hover{
   background-color: var(--sc-comentbtn-color-n-061);
@@ -72,13 +104,21 @@
   color: var(--sc-color-n-030);
 }
 
-#form-container input{
+#form-container input, #purchaseContainer input{
   width: 100%;
   padding: 8px;
   margin-right: 10px;
   font-size: 14px;
   border: 1px solid var(--sc-color-n-030);
   border-radius: 22px;
+}
+
+#form-container input[name="name"] {
+  width: 40%;
+
+}
+#form-container input[name="email"] {
+  width: 70%;
 }
 
 #purchaseContainer textarea {
