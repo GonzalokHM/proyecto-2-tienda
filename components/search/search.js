@@ -19,8 +19,13 @@ import "./search.css"
 togleSearch.addEventListener('click', () => {
   searchForm.classList.toggle('show-search');
   searchForm.classList.toggle('hide-search');
-  // searchOptionsContainer.innerHTML = searchForm.classList.contains('show-search') ? searchTemplate : '' ;
-
+  const navbarUl = document.querySelector("#navbar ul");
+  const showSearchForm = searchForm.classList.contains('show-search');
+  if (showSearchForm) {
+    navbarUl.classList.add("column");
+  } else {
+    navbarUl.classList.remove("column");
+  }
 });
 
 

@@ -12,6 +12,7 @@ const purchaseContainer = document.getElementById('purchaseContainer');
 const purchaseProducts = purchaseContainer.querySelector('#purchaseProducts');
 const purchaseCloseBtn = purchaseContainer.querySelector('#purchaseCloseBtn');
 const commentsPurchaseBtn = purchaseContainer.querySelector('#commentsPurchaseBtn');
+let commentsFormAdded = false;
 
 const showPurchaseContainer = () => {   
     // Agregar efecto de confeti
@@ -69,6 +70,8 @@ const closePurchaseContainer = () => {
 };
 
 const continueComment = () => {
+
+    if (!commentsFormAdded) {
   const commentsContainer = document.createElement('div');
   commentsContainer.classList.add('commentsContainerPurchase');
   commentsContainer.innerHTML = '<h2>Dejar un comentario</h2>' + '<div id="purchaseCloseBtn"><span class="closeIcon">&#x2716;<span></div>' 
@@ -81,7 +84,8 @@ const continueComment = () => {
   purchaseCloseBtn.addEventListener('click', closePurchaseContainer);
 
   purchaseContainer.appendChild(commentsContainer);
-};
+  commentsFormAdded = true;
+}};
 
 
 const randomQuotes=()=>{

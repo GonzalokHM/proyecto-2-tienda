@@ -23,13 +23,35 @@ document.addEventListener('input', event => {
   }
 });
 
+const loadCommentsButton = document.querySelector('#load-comments');
+loadCommentsButton.addEventListener('click', () => {
+getComments();
+});
+
+const CACHE_KEY = 'commentsCache';
+
+const getCommentsFromCache = () => {
+  const cachedComments = localStorage.getItem(CACHE_KEY);
+  return cachedComments ? JSON.parse(cachedComments) : [];
+};
+
+const setCommentsToCache = (comments) => {
+  localStorage.setItem(CACHE_KEY, JSON.stringify(comments));
+};
+
+let commentsFromAPI = getCommentsFromCache();
+
+const state = { comments: [] }; // Creamos un objeto para almacenar los comentarios
+
+const commentsList = document.getElementById('comments-list');
+
 const getcommentsCardTemplate = (name, email, body) => `
 <h3>${name}</h3>
 <p><span class="label">email:</span> ${email}</p>
 <p><span class="label">comment:</span> ${body}</p>
 `;
 
-let commentsFromAPI = [];
+
 
 const getComments = async () => {
   try {
@@ -38,8 +60,11 @@ const getComments = async () => {
     loadingIndicator.style.display = 'flex'; // Mostrar indicador de carga
     loadCommentsButton.disabled = true; // Deshabilitar el botón de carga mientras se realiza la petición
 
+    if (commentsFromAPI.length === 0) {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts/1/comments');
     commentsFromAPI = await response.json();
+    setCommentsToCache(commentsFromAPI);
+    }
     showComments();
   } catch (err) {
     console.error(err);
@@ -56,15 +81,6 @@ const getComments = async () => {
     loadCommentsButton.disabled = false; // Habilitar el botón de carga nuevamente
   }
 };
-
-const loadCommentsButton = document.querySelector('#load-comments');
-loadCommentsButton.addEventListener('click', () => {
-getComments();
-});
-
-const state = { comments: [] }; // Creamos un objeto para almacenar los comentarios
-
-const commentsList = document.getElementById('comments-list');
 
 const showComments = () => {
   commentsList.innerHTML = '';
@@ -83,8 +99,8 @@ const isValidEmail = (email) => {
 };
 
  const handleFormSubmit = async (event) => {
+   event.preventDefault();
   const commentsForm = document.getElementById('comments-form');
-  event.preventDefault();
   const nameInput = commentsForm.querySelector('input[name="name"]');
   const emailInput = commentsForm.querySelector('input[name="email"]');
   const textInput = commentsForm.querySelector('textarea[name="comment"]');

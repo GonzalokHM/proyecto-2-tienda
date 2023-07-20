@@ -269,6 +269,12 @@ button:focus-visible {
   margin: 0;
 }
 
+#navbar.open ul.column {
+  /* Estilos para #navbar.open ul cuando aparece el elemento .search-form.show-search */
+  flex-direction: column;
+}
+
+
 .nav li {
   color: var(--pr-color-n-100);
   margin: 1px;

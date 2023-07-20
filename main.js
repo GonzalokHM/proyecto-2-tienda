@@ -44,6 +44,15 @@ window.addEventListener('DOMContentLoaded', () => {
       searchForm.classList.add('hide-search');
       searchForm.classList.remove('show-search');
     }
+    
+  const showSearchForm = searchForm.classList.contains('show-search');
+  // Cambiar la dirección flexible del navbar según si el formulario de búsqueda está abierto o cerrado
+  const navbarUl = document.querySelector("#navbar ul");
+  if (showSearchForm) {
+    navbarUl.classList.add("column");
+  } else {
+    navbarUl.classList.remove("column");
+  }
   });
 
 
@@ -60,9 +69,6 @@ window.addEventListener('scroll', () => {
     navbarContainer.classList.remove('fixed');
   }
 });
-
-
-
 
 showStock();
 initializeSearch()
