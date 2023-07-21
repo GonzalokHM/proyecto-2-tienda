@@ -44,16 +44,17 @@ nav {
   
   
   #cartContainer {
-    position: absolute;
-    margin: 10px;
-    top: 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 10px;
+  top: 40px;
    
-    width: 300px;
-    padding: 10px;
-    
+  width: 300px;
+  padding: 10px;
+  
   border-radius: 20%;
   background: var(--cd-background-color-n-002-2);
-  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   border: 1.5px solid rgba(209, 213, 219, 0.3);
  
@@ -75,7 +76,6 @@ nav {
     border-radius: 20px;
     box-shadow: 0 20px 30px var(--cd-box-shadow-color-n-003);
     backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
     border: 1px solid var(--cd-border-color-n-004);
     margin: 10px;
     
