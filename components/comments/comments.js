@@ -117,4 +117,16 @@ const isValidEmail = (email) => {
   }
 }
 
+const commentsLink = document.getElementById('commentsLink');
+// Agregar la función de manejo de eventos al enlace
+commentsLink.addEventListener('click', (event)=> {
+  event.preventDefault();
+  
+  // Abrir commentsForm
+  loadingFormButton.click();
+
+  // Realizar el desplazamiento suave utilizando scrollIntoView()
+  commentsContainer.scrollIntoView({ behavior: 'smooth',  block: 'center' });
+});
+
 export {handleFormSubmit};

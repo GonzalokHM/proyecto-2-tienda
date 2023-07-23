@@ -15,6 +15,14 @@ const commentsPurchaseBtn = purchaseContainer.querySelector('#commentsPurchaseBt
 let commentsFormAdded = false;
 
 const showPurchaseContainer = () => {   
+
+    const cart = state.getCart();
+    
+    if (cart.length === 0) {
+        alert('¡¡Carrito vacio!!');
+        return; // Detener si el carrito esta vacio.
+    }
+
     // Agregar efecto de confeti
     const confettiContainer = document.getElementById('confettiContainer');
     confettiContainer.innerHTML = ''; // Limpiar el contenedor de confeti
@@ -30,7 +38,6 @@ const showPurchaseContainer = () => {
         
         confettiContainer.appendChild(confetti);
     }
-    const cart = state.getCart();
     
     
     purchaseProducts.innerHTML = cart
@@ -46,7 +53,7 @@ const showPurchaseContainer = () => {
     
     setTimeout(() => {
         confettiContainer.innerHTML = '';
-    }, 5000); // Desaparecer el confeti después de 5 segundos
+    }, 5000); // Desaparece el confeti
 
 };
 

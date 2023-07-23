@@ -27,7 +27,7 @@
           <span class="menu-icon__line"></span>
         </div>
         <div id="searchOptionsContainer"></div>
-        <nav id="navbar">
+        <nav id="navbar" class="navbar-center">
           <ul class="nav hidden">
             <li><a href="#">Inicio</a></li>
             <li>
@@ -36,10 +36,10 @@
             <li>
               <a id= "togleSearchContainer" class="searchOpen" role="button">filtrar</a>
             </li>
-            <li><a href="#comments-form">Reseñas</a></li>
+            <li><a href="#comments-container" id="commentsLink">Reseñas</a></li>
           </ul>
         </nav>
-          <button id="cartBtn"><span class="cartIcon">🛒</span></button>
+        <button id="cartBtn"><span class="cartIcon">🛒</span></button>
          <div id="cartContainer" class="cart-hidden"></div>
       </div>
     </header>
@@ -50,12 +50,14 @@
         <div id="currentPageNumber"></div>
         <div id="totalPagesNumber"></div>
       </section>
-      
+      <div class="space"></div>
       <section id="comments-container">
         <h2>Reseñas</h2>
       </section>
+      
     </main>
     <footer>
+      <div id="contactInfo"></div>
       <p class="copyR">&copy; GreenShop 2023</p>
     </footer>
     <script type="module" src="./src/state.js"></script>

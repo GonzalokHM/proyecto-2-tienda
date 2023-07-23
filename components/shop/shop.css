@@ -98,11 +98,9 @@ ul{
 #currentPageNumber  {
   display: flex;
   justify-content: center;
-  margin-left: 10%;
-  margin-right: 10%;
   margin-top: 5%;
   background: var(--cd-background-color-n-002);
-  border-radius: 30%; 
+  border-radius: 34%; 
   box-shadow: 0 4px 30px var(--cd-box-shadow-color-n-003);
   backdrop-filter: blur(5px);
   border: 1px solid var(--cd-border-color-n-004);

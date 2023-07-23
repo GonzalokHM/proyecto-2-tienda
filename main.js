@@ -6,6 +6,7 @@ import { initializeSearch } from "./components/search/search";
 import { showStock } from "./components/shop/shop";
 import { toggleCart, showCart} from "./components/cart/cart";
 import { state } from "./src/state";
+import contactTemplate from "./components/contact";
 
 const navbarContainer = document.querySelector('.navbar-container');
 const navbarHeight = navbarContainer.offsetHeight;
@@ -73,4 +74,7 @@ window.addEventListener('scroll', () => {
 showStock();
 initializeSearch()
 showCart(state.getCart());
-})
+});
+
+const contactContainer= document.getElementById('contactInfo');
+contactContainer.innerHTML= contactTemplate;

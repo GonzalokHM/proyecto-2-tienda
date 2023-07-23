@@ -1,10 +1,7 @@
-
-nav {
-  display: flex;
-  justify-content: flex-end;
-}
 #cartBtn{
   align-self: flex-end;
+  right: 1rem;
+  position: fixed;
 }
 .cartIcon, #cartBtn {
   display: block;
@@ -24,14 +21,11 @@ nav {
   background-color:  var(--sc-comentbtn-color-n-060);
 }
 
-.navbar-container.fixed .cartIcon{
-  margin-right: 19px;
-}
-
 #cartBtn{
   border: 1px solid transparent;
   padding: 0;
   margin-left: 0;
+  margin-right: 0
 }
 
 .cart-hidden {
