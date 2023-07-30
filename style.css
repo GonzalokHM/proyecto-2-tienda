@@ -221,7 +221,7 @@ button:focus-visible {
 .navbar-container.fixed {
   position: fixed;
   top: 0;
-  width: 96%;
+  width: auto;
   z-index: 999;
   left: 0;
   right: 0;
@@ -396,10 +396,6 @@ font-size: 14px;}
 
 h2{
   font-size: 1rem;
-}
-
-.navbar-container.fixed{
-  width: 91%;
 }
 
 footer{
