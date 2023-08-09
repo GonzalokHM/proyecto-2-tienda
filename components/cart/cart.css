@@ -138,6 +138,8 @@
   flex-flow: column;
   align-items: center;
   position: fixed;
+  max-height: 98vh;
+  overflow-y: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

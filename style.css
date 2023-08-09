@@ -9,6 +9,7 @@
   --sc-color-n-020: green;
   --sc-color-n-030: #007bff;
   --sc-x-color-n-040: red;
+  --sc-no-products-message-n-041:rgba(232, 4, 0, 0.963);
   --sc-star-color-n-050: rgb(211, 211, 9);
   --sc-comentbtn-color-n-060: rgba(255, 153, 0, 0.684);
   --sc-comentbtn-color-n-061: rgba(128, 38, 0, 0.699);
@@ -22,9 +23,13 @@
   --cd-background-comentbtn-color-n-042: #007bff7d;
   --cd-background-purchase-color-n-052: hwb(105deg 75% 5% / 54%);
   --cd-box-shadow-color-n-003: rgba(0, 0, 0, 0.1);
+  --cd-box-shadow-color-n-003-2: rgba(0, 0, 0, 0.2);
   --cd-box-shadow-cartextp-color-n-005: rgba(255, 191, 0, 0.797);
   --cd-box-shadow-cartotal-color-n-006: rgba(26, 255, 0, 0.697);
   --cd-border-color-n-004: rgba(255, 255, 255, 0.12);
+  --cd-chatBot-title-color-n-010101-1: rgb(178 0 16);
+  --cd-chatBot-chatbot-message-color-n-010101-2: aqua;
+  
  }
 /* // */
 header{

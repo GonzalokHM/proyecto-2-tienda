@@ -67,6 +67,10 @@ emptyCartBtn.addEventListener('click', () => {
 });
 
 const purchaseBtn = document.getElementById('purchase');
-purchaseBtn.addEventListener('click', showPurchaseContainer);
+purchaseBtn.addEventListener('click', () =>{
+showPurchaseContainer()
+state.clearCart();
+showCart();
+});
 
 export { toggleCart, showCart };

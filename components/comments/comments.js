@@ -98,8 +98,10 @@ const isValidEmail = (email) => {
   return emailRegex.test(email);
 };
 
+let isCommentsFormVisible = false;
+
  const handleFormSubmit = async (event) => {
-   event.preventDefault();
+ event.preventDefault();
   const commentsForm = document.getElementById('comments-form');
   const nameInput = commentsForm.querySelector('input[name="name"]');
   const emailInput = commentsForm.querySelector('input[name="email"]');
@@ -114,6 +116,15 @@ const isValidEmail = (email) => {
     nameInput.value = '';
     emailInput.value = '';
     textInput.value = '';
+    isCommentsFormVisible = false;
+
+    const event = new CustomEvent('commentFormSubmitted');
+    document.dispatchEvent(event);
+
+    
+    if (commentsForm) {
+      commentsForm.remove();
+    }
   }
 }
 

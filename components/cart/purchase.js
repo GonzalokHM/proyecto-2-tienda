@@ -74,7 +74,17 @@ const closePurchaseContainer = () => {
     navContainer.classList.remove('blurNone') 
     const cartBtn = document.getElementById('cartBtn');
     cartBtn.disabled = false;
+
+   // Resetear el estado del formulario de comentarios
+  isCommentsFormVisible = false;
+  commentsFormAdded = false;
+  const commentsContainer = document.querySelector('.commentsContainerPurchase');
+  if (commentsContainer) {
+    commentsContainer.remove();
+  }
 };
+
+let isCommentsFormVisible = false;
 
 const continueComment = () => {
 
@@ -84,6 +94,7 @@ const continueComment = () => {
   commentsContainer.innerHTML = '<h2>Dejar un comentario</h2>' + '<div id="purchaseCloseBtn"><span class="closeIcon">&#x2716;<span></div>' 
     + templateForm;
 
+    
   const commentsForm = commentsContainer.querySelector('#comments-form');
   commentsForm.addEventListener('submit', handleFormSubmit);
 
@@ -92,7 +103,23 @@ const continueComment = () => {
 
   purchaseContainer.appendChild(commentsContainer);
   commentsFormAdded = true;
+  isCommentsFormVisible = true;
 }};
+
+// Escuchar el evento personalizado 'commentFormSubmitted'
+document.addEventListener('commentFormSubmitted', () => {
+    // Verificamos si estamos trabajando con el formulario de compra
+    const isPurchaseForm = purchaseContainer.style.display === 'flex';
+    
+    if (isPurchaseForm) {
+        // Aquí cambiamos el contenido del h2 solo si estamos trabajando con el formulario de compra
+        const commentsContainer = document.querySelector('.commentsContainerPurchase');
+        const commentsForm = commentsContainer.querySelector('#comments-form');
+      const commentsHeading = commentsContainer.querySelector('h2');
+      commentsHeading.textContent = 'Comentario enviado';
+      commentsForm.style.display = 'none';
+    }
+  });
 
 
 const randomQuotes=()=>{

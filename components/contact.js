@@ -1,5 +1,5 @@
 const contactTemplate = `
-<div><img src="assets/WhatsApp-Logo.svg" alt="WhatsApp Logo" width="30" height="30" style="vertical-align: middle;">
+<div><img src="assets/WhatsApp-logo.png" alt="WhatsApp Logo" width="24" height="24" style="vertical-align: middle;">
 <span style="vertical-align: middle;">656947318</span>
 </div>
 <div><p>✉️ contacto@greenshop.com</p></div>

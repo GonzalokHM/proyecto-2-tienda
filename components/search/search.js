@@ -65,6 +65,8 @@ const filterItems = () => {
 
   });
 
+  
+
   const sortOptions = {
     'price-asc': (a, b) => a.price - b.price,
     'price-desc': (a, b) => b.price - a.price,
@@ -79,7 +81,18 @@ const filterItems = () => {
   state.setFilteredStock(filteredItems); // Almacenar los elementos filtrados en el estado
 
 
-  showStock(filteredItems);
+  if (filteredItems.length === 0) {
+    // Si no hay productos en el rango de precios seleccionado, muestra un mensaje en lugar de los productos
+    showNoProductsMessage();
+  } else {
+    // Si hay productos en el rango de precios seleccionado, muestra los productos normalmente
+    showStock(filteredItems);
+  }
+};
+
+const showNoProductsMessage = () => {
+  const productsList = document.getElementById('itemList');
+  productsList.innerHTML = '<p class="no-products-message">¡No hay productos en ese rango de precios!</p>';
 };
 
 
@@ -92,11 +105,24 @@ const updateSelectedPrice = () => {
 
 // Event listeners para los campos de búsqueda, rango de precios y select de ordenamiento
 searchInput.addEventListener('input', filterItems);
+
 minPriceInput.addEventListener('input', () => {
+  const minPrice = parseFloat(minPriceInput.value);
+  const maxPrice = parseFloat(maxPriceInput.value);
+
+  if (minPrice > maxPrice) {
+    maxPriceInput.value = minPrice + 1;
+  }
   updateSelectedPrice();
   filterItems();
 });
 maxPriceInput.addEventListener('input', () => {
+  const minPrice = parseFloat(minPriceInput.value);
+  const maxPrice = parseFloat(maxPriceInput.value);
+
+  if (maxPrice < minPrice) {
+    minPriceInput.value = maxPrice - 1;
+  }
   updateSelectedPrice();
   filterItems();
 });

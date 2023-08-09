@@ -1,5 +1,5 @@
 const templateForm = `
-<form id="comments-form">
+<form id="comments-form" method="post">
   <div class="input">
     <input type="text" placeholder="nombre👈" id="name-input" name="name" required >
   </div>
