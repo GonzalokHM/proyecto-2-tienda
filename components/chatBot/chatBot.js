@@ -30,6 +30,10 @@ const addMessage = (text, sender) => {
   }
   messageContainer.textContent = text;
   chatbotMessages.appendChild(messageContainer);
+
+  
+// Desplazamiento automático hacia abajo
+chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 };
 
 //Obtener respuesta del chatbot
@@ -119,7 +123,6 @@ const changeButtonColor= () =>{
   const randomColor = getRandomColor();
   chatbotButton.style.backgroundColor = randomColor;
 }
-
 let colorChangingInterval; // Variable para almacenar el intervalo
 
 // Evento para mostrar el chatbot cuando se haga clic en el botón fijo
