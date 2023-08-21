@@ -28,6 +28,7 @@ const searchTemplate = `
       <option value="stars-desc">Estrellas (descendente)</option>
     </select>
   </div>
+  <button id= "resetFilters">♻️</button>
   </div>
 `;
 

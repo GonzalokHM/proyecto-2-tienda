@@ -128,6 +128,24 @@ maxPriceInput.addEventListener('input', () => {
 });
 categorySelect.addEventListener('change', filterItems);
 sortSelect.addEventListener('change', filterItems);
+
+
+const resetFiltersButton = document.getElementById('resetFilters');
+
+resetFiltersButton.addEventListener('click', () => {
+  // Restablecer los valores de los campos de filtro
+  searchInput.value = '';
+  minPriceInput.value = 0;
+  maxPriceInput.value = 3000;
+  categorySelect.value = '';
+  sortSelect.value = '';
+
+  // Actualizar el texto del rango de precios seleccionado
+  updateSelectedPrice();
+
+  // Aplicar los filtros
+  filterItems();
+});
 };
 
 export {initializeSearch};
